@@ -19,7 +19,7 @@ export const Header = memo(function HeaderBase() {
       {value ? (
         <>
           <button
-            aria-label="メニューを開く"
+            aria-label="메뉴 드로어"
             aria-controls="drawer"
             aria-expanded={isOpen}
             className={styles.openMenu}
@@ -38,7 +38,7 @@ export const Header = memo(function HeaderBase() {
         </>
       ) : (
         router.asPath !== "/login" && (
-          <LinkButton href={"/login"}>ログイン</LinkButton>
+          <LinkButton href={"/login"}>로그인</LinkButton>
         )
       )}
     </header>

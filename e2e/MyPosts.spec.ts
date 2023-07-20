@@ -7,41 +7,41 @@ import {
 } from "./postUtil";
 import { assertUnauthorizedRedirect, login, url } from "./util";
 
-test.describe("投稿記事一覧ページ", () => {
+test.describe("게재된 기사 목록 페이지", () => {
   const path = "/my/posts";
-  const userName: UserName = "TaroYamada";
+  const userName: UserName = "Bae Eonsu";
 
-  test("未ログイン時、ログイン画面にリダイレクトされる", async ({ page }) => {
+  test("로그인 상태가 아니면 로그인 화면으로 리다이렉트된다", async ({ page }) => {
     await assertUnauthorizedRedirect({ page, path });
   });
 
-  test("自分のプロフィールが閲覧できる", async ({ page }) => {
+  test("자신의 프로필을 열람할 수 있다", async ({ page }) => {
     await page.goto(url(path));
     await login({ page });
     await expect(page).toHaveURL(url(path));
-    const profile = page.getByRole("region", { name: "プロフィール" });
-    await expect(profile).toContainText("TaroYamada");
+    const profile = page.getByRole("region", { name: "프로필" });
+    await expect(profile).toContainText("Bae Eonsu");
   });
 
-  test("新規記事を下書き保存すると、投稿記事一覧に記事が追加される", async ({
+  test("신규기사를 비공개 상태로 저장하면 게재된 기사 목록에 기사가 추가된다", async ({
     page,
   }) => {
-    const title = "下書き投稿一覧表示テスト";
+    const title = "비공개 상태로 저장된 기사 목록 테스트";
     await gotoAndCreatePostAsDraft({ page, title, userName });
     await page.goto(url(path));
     await expect(page.getByText(title)).toBeVisible();
   });
 
-  test("新規記事を公開保存すると、投稿記事一覧に記事が追加される", async ({
+  test("신규기사를 공개 상태로 저장하면 게재된 기사 목록에 기사가 추가된다", async ({
     page,
   }) => {
-    const title = "公開投稿一覧表示テスト";
+    const title = "공개 상태로 저장된 기사 목록 테스트";
     await gotoAndCreatePostAsPublish({ page, title, userName });
     await page.goto(url(path));
     await expect(page.getByText(title)).toBeVisible();
   });
 
-  test("アクセシビリティ検証", async ({ page }) => {
+  test("접근성 검증", async ({ page }) => {
     await page.goto(url(path));
     await injectAxe(page as any);
     await checkA11y(page as any);

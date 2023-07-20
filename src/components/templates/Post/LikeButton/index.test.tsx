@@ -32,22 +32,22 @@ const setup = ({ likeCount, liked, isMyPost, isLoggedIn } = defaultArgs) => {
   return { click, button };
 };
 
-test("Like 済みの場合、ボタンは非活性", async () => {
+test("이미 Like한 경우에 버튼은 비활성화된다", async () => {
   const { button } = setup({ ...defaultArgs, liked: true });
   expect(button).toBeDisabled();
 });
 
-test("自分の投稿の場合、ボタンは非活性", async () => {
+test("내가 쓴 기사에는 버튼이 비활성화된다", async () => {
   const { button } = setup({ ...defaultArgs, isMyPost: true });
   expect(button).toBeDisabled();
 });
 
-test("未ログインの投稿の場合、ボタンは非活性", async () => {
+test("로그인 되어있지 않으면 버튼은 비활성화된다", async () => {
   const { button } = setup({ ...defaultArgs, isLoggedIn: false });
   expect(button).toBeDisabled();
 });
 
-test("Like 押下しリクエストに成功すると、数が1加算され、ボタンが非活性化する", async () => {
+test("Like를 클릭해서 요청이 성공하면 Like수가 1 증가하고 버튼이 비활성화된다", async () => {
   mockPostLikeResolved();
   const { click, button } = setup();
   expect(screen.getByText("Like")).toBeInTheDocument();
@@ -59,7 +59,7 @@ test("Like 押下しリクエストに成功すると、数が1加算され、�
   expect(button).toBeDisabled();
 });
 
-test("Like 押下しリクエストに失敗すると、数は加算されず、ボタンは非活性化しない", async () => {
+test("Like를 클릭해서 요청이 실패하면 Like수가 증가하지 않고 버튼은 비활성화되지 않는다", async () => {
   mockPostLikeRejected();
   const { click, button } = setup();
   expect(button).toHaveTextContent("0");
@@ -68,6 +68,6 @@ test("Like 押下しリクエストに失敗すると、数は加算されず、
   expect(button).toHaveTextContent("0");
   expect(button).not.toBeDisabled();
   await waitFor(() =>
-    expect(screen.getByRole("alert")).toHaveTextContent("エラーが発生しました")
+    expect(screen.getByRole("alert")).toHaveTextContent("에러가 발생했습니다")
   );
 });

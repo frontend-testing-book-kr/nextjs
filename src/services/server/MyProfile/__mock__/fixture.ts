@@ -2,11 +2,11 @@ import { GetMyProfileReturn } from "../";
 
 export const getMyProfileData: GetMyProfileReturn = {
   id: 1,
-  name: "TaroYamada",
-  bio: "フロントエンドエンジニア。TypeScript と UIコンポーネントのテストに興味があります。",
-  twitterAccount: "taro-yamada",
-  githubAccount: "taro-yamada",
+  name: "Bae Eonsu",
+  bio: "프런트엔드 엔지니어. TypeScript와 UI 컴포넌트 테스트에 관심이 있습니다.",
+  twitterAccount: "eonsu-bae",
+  githubAccount: "eonsu-bae",
   imageUrl: "/__mocks__/images/img01.jpg",
-  email: "taroyamada@example.com",
+  email: "eonsubae@example.com",
   likeCount: 1,
 };

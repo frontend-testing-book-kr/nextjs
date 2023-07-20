@@ -34,15 +34,15 @@ function setup() {
 }
 
 describe("LoginUserInfo", () => {
-  test("初回マウント時、ログインユーザー取得APIを呼ぶ", async () => {
+  test("마운트시에 로그인한 사용자 정보를 취득하는 API를 호출한다", async () => {
     const { getMyProfile } = setup();
     await waitFor(() =>
-      expect(screen.getByTestId("name")).toHaveTextContent("TaroYamada")
+      expect(screen.getByTestId("name")).toHaveTextContent("Bae Eonsu")
     );
     expect(getMyProfile).toHaveBeenCalledTimes(1);
   });
 
-  test("updateProfile を呼ぶと、ログインユーザー取得APIを再度呼ぶ", async () => {
+  test("updateProfile를 호출하면 로그인한 사용자 정보를 취득하는 API가 다시 호출된다", async () => {
     const { getMyProfile } = setup();
     await user.click(screen.getByRole("button"));
     expect(getMyProfile).toHaveBeenCalledTimes(2);

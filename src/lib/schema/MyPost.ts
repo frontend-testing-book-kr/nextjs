@@ -1,12 +1,12 @@
 import * as z from "zod";
 
 export const updateMyPostInputSchema = z.object({
-  title: z.string().min(1, "1文字以上入力してください"),
+  title: z.string().min(1, "1개 이상의 문자를 입력해주세요"),
   description: z.string().nullable(),
   body: z.string().nullable(),
   published: z.boolean(),
   imageUrl: z
-    .string({ required_error: "イメージを選択してください" })
+    .string({ required_error: "이미지를 선택해주세요" })
     .nullable(),
 });
 export type UpdateMyPostInput = z.infer<typeof updateMyPostInputSchema>;

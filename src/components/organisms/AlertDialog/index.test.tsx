@@ -14,7 +14,7 @@ describe("AlertDialog", () => {
     render(<CustomButtonLabel />);
     expect(screen.getByRole("button", { name: "OK" })).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: "キャンセル" })
+      screen.getByRole("button", { name: "CANCEL" })
     ).toBeInTheDocument();
   });
 

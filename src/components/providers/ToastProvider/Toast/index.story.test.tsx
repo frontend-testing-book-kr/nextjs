@@ -6,15 +6,15 @@ const { Succeed, Failed, Busy } = composeStories(stories);
 
 test("Succeed", () => {
   render(<Succeed />);
-  expect(screen.getByRole("alert")).toHaveTextContent("成功しました");
+  expect(screen.getByRole("alert")).toHaveTextContent("성공했습니다");
 });
 
 test("Failed", () => {
   render(<Failed />);
-  expect(screen.getByRole("alert")).toHaveTextContent("失敗しました");
+  expect(screen.getByRole("alert")).toHaveTextContent("실패했습니다");
 });
 
 test("Busy", () => {
   render(<Busy />);
-  expect(screen.getByRole("alert")).toHaveTextContent("通信中…");
+  expect(screen.getByRole("alert")).toHaveTextContent("통신중입니다");
 });

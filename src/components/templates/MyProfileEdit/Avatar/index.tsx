@@ -23,7 +23,7 @@ export const Avatar = (props: Props) => {
     ...props,
     onRejected: () => {
       showToast({
-        message: `画像のアップロードに失敗しました`,
+        message: `이미지 업로드에 실패했습니다`,
         style: "failed",
       });
     },
@@ -35,7 +35,7 @@ export const Avatar = (props: Props) => {
       </p>
       <InputFileButton
         buttonProps={{
-          children: "写真を変更する",
+          children: "이미지 변경하기",
           type: "button",
         }}
         inputProps={{

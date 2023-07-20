@@ -19,7 +19,7 @@ const Page: NextPageWithGsspResult<Props> = ({ data, err }) => {
 };
 Page.getLayout = BasicLayout;
 Page.getPageTitle = PageTitle(
-  ({ data }) => `${data?.authorName}さんのプロフィール編集`
+  ({ data }) => `${data?.authorName}님의 프로필 편집`
 );
 
 export const getServerSideProps = withLogin<Props>(async ({ user }) => {

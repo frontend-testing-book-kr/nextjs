@@ -8,7 +8,7 @@ type Props = GetMyProfileReturn;
 
 export const Profile = (props: Props) => {
   return (
-    <section role="region" aria-label="プロフィール" className={styles.module}>
+    <section role="region" aria-label="프로필" className={styles.module}>
       <div className={styles.profile}>
         <p className={styles.avatar}>
           <img src={props.imageUrl} alt="" />
@@ -19,7 +19,7 @@ export const Profile = (props: Props) => {
             <Star /> {props.likeCount}
           </p>
           <p className={styles.bio}>{props.bio}</p>
-          <LinkButton href={`/my/profile/edit`}>変更する</LinkButton>
+          <LinkButton href={`/my/profile/edit`}>수정</LinkButton>
         </div>
       </div>
       <Accounts

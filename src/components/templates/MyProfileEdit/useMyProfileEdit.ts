@@ -21,13 +21,13 @@ export function useMyProfileEdit({ profile }: Props) {
   const { updateProfile } = useLoginUserInfoAction();
   const onSubmit = handleSubmit(async (input) => {
     try {
-      showToast({ message: "保存中…", style: "busy" });
+      showToast({ message: "저장중입니다...", style: "busy" });
       await updateMyProfileEdit({ input });
       await router.push("/my/posts");
-      showToast({ message: "保存に成功しました", style: "succeed" });
+      showToast({ message: "저장되었습니다", style: "succeed" });
       updateProfile();
     } catch (err) {
-      showToast({ message: "保存に失敗しました", style: "failed" });
+      showToast({ message: "저장에 실패했습니다", style: "failed" });
     }
   });
   return { register, setValue, onSubmit, control, errors };

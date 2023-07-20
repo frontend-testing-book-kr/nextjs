@@ -13,7 +13,7 @@ export const MyPostEdit = ({ post }: Props) => {
   });
   return (
     <PostForm
-      title="記事編集"
+      title="기사편집"
       defaultValues={{ ...post }}
       onClickSave={onClickSave}
       onClickDelete={onClickDelete}

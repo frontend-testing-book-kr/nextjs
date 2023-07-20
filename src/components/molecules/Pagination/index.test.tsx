@@ -24,28 +24,28 @@ const assertHasCurrent = (name: string) =>
     "page"
   );
 
-test("現在ページ値を渡していない場合、レンダリングされない", () => {
+test("현재 페이지값을 전달하지 않으면 렌더링되지 않는다", () => {
   setup(0);
   expect(
-    screen.queryByRole("navigation", { name: "ページネーション" })
+    screen.queryByRole("navigation", { name: "페이지네이션" })
   ).toBeNull();
 });
 
-test("現在ページ値を渡している場合、レンダリングされる", () => {
+test("현재 페이지값을 전달하면 렌더링된다", () => {
   setup(1);
   expect(
-    screen.getByRole("navigation", { name: "ページネーション" })
+    screen.getByRole("navigation", { name: "페이지네이션" })
   ).toBeInTheDocument();
 });
 
-test("カレント表記が変化する", async () => {
+test("현재 기사가 변경된다", async () => {
   setup(1);
   assertHasCurrent("1");
   await clickLink("2");
   assertHasCurrent("2");
 });
 
-test("URL検索クエリーが変わる", async () => {
+test("URL검색 쿼리가 변경된다", async () => {
   mockRouter.setCurrentUrl("/posts?page=1");
   setup(1);
   expect(mockRouter).toMatchObject({ query: { page: "1" } });

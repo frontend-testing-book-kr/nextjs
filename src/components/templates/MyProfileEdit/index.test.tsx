@@ -12,8 +12,8 @@ const user = userEvent.setup();
 
 function setup() {
   const utils = render(<Default />);
-  const name = utils.getByRole("textbox", { name: "ユーザー名" });
-  const button = screen.getByRole("button", { name: "プロフィールを変更する" });
+  const name = utils.getByRole("textbox", { name: "사용자명" });
+  const button = screen.getByRole("button", { name: "프로필 변경하기" });
   const clearName = () => user.clear(name);
   const typeName = (value: string) => user.type(name, value);
   const clickButton = () => user.click(button);
@@ -39,7 +39,7 @@ beforeEach(() => {
   mockRouter.setCurrentUrl("/my/profile/edit");
 });
 
-test("通信に成功した場合、画面遷移する", async () => {
+test("통신에 성공하면 화면을 이동한다", async () => {
   const { clickButton } = await setupValidInputs();
   await clickButton();
   await waitFor(() =>
@@ -47,18 +47,18 @@ test("通信に成功した場合、画面遷移する", async () => {
   );
 });
 
-test("通信に成功した場合「保存に成功しました」が表示される", async () => {
+test("통신에 성공하면 '저장되었습니다'가 표시된다", async () => {
   const { clickButton } = await setupValidInputs();
   await clickButton();
   await waitFor(() =>
-    expect(screen.getByRole("alert")).toHaveTextContent("保存に成功しました")
+    expect(screen.getByRole("alert")).toHaveTextContent("저장되었습니다")
   );
 });
 
-test("通信に失敗した場合「保存に失敗しました」が表示される", async () => {
+test("통신에 실패하면 '저장에 실패했습니다'가 표시된다", async () => {
   const { clickButton } = await setupInvalidInputs();
   await clickButton();
   await waitFor(() =>
-    expect(screen.getByRole("alert")).toHaveTextContent("保存に失敗しました")
+    expect(screen.getByRole("alert")).toHaveTextContent("저장에 실패했습니다")
   );
 });

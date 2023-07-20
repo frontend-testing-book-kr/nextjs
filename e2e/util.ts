@@ -10,30 +10,30 @@ export const getUser = (name: string) =>
 
 export async function login({
   page,
-  userName = "TaroYamada",
+  userName = "Bae Eonsu",
 }: {
   page: Page;
   userName?: UserName;
 }) {
   const user = getUser(userName)!;
-  await page.getByRole("textbox", { name: "メールアドレス" }).fill(user.email);
-  await page.getByRole("textbox", { name: "パスワード" }).fill(user.password);
-  await page.getByRole("button", { name: "ログイン" }).click();
+  await page.getByRole("textbox", { name: "메일주소" }).fill(user.email);
+  await page.getByRole("textbox", { name: "비밀번호" }).fill(user.password);
+  await page.getByRole("button", { name: "로그인" }).click();
 }
 
 export async function logout({
   page,
-  userName = "TaroYamada",
+  userName = "Bae Eonsu",
 }: {
   page: Page;
   userName?: UserName;
 }) {
   const user = getUser(userName)!;
   const loginUser = page
-    .locator("[aria-label='ログインユーザー']")
+    .locator("[aria-label='로그인한 사용자']")
     .getByText(user.name);
   await loginUser.hover();
-  await page.getByText("ログアウト").click();
+  await page.getByText("로그아웃").click();
 }
 
 export async function assertUnauthorizedRedirect({
@@ -45,5 +45,5 @@ export async function assertUnauthorizedRedirect({
 }) {
   await page.goto(url(path));
   await page.waitForURL(url("/login"));
-  await expect(page).toHaveTitle("ログイン | Tech Posts");
+  await expect(page).toHaveTitle("로그인 | Tech Posts");
 }

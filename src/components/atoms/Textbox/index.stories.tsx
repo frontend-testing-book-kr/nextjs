@@ -3,7 +3,7 @@ import { Textbox } from "./";
 
 export default {
   component: Textbox,
-  args: { placeholder: "ここに文字を入力します" },
+  args: { placeholder: "문자를 입력해주세요" },
 } as ComponentMeta<typeof Textbox>;
 
 type Story = ComponentStoryObj<typeof Textbox>;

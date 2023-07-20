@@ -2,47 +2,47 @@ import { expect, test } from "@playwright/test";
 import { checkA11y, injectAxe } from "axe-playwright";
 import { login, url } from "./util";
 
-test.describe("投稿ページ", () => {
+test.describe("글쓰기 페이지", () => {
   const path = "/posts/1";
 
-  test("未ログイン時、ログインボタンが表示されている", async ({ page }) => {
+  test("로그인 상태가 아니면 로그인 버튼이 표시된다", async ({ page }) => {
     await page.goto(url(path));
-    const buttonLogin = page.getByRole("link", { name: "ログイン" });
+    const buttonLogin = page.getByRole("link", { name: "로그인" });
     await expect(buttonLogin).toBeVisible();
   });
 
-  test("他人の記事に Like できる", async ({ page }) => {
+  test("다른 사람의 기사를 Like할 수 있다", async ({ page }) => {
     await page.goto(url("/login"));
-    await login({ page, userName: "TaroYamada" });
+    await login({ page, userName: "Bae Eonsu" });
     await expect(page).toHaveURL(url("/"));
-    // ここから ID:10 の記事ページ
+    // 여기서부터 ID가 10인 기사의 페이지
     await page.goto(url("/posts/10"));
     const buttonLike = page.getByRole("button", { name: "Like" });
     const buttonText = page.getByTestId("likeStatus");
-    // Like ボタンが有効になっていて、Like は 0件である
+    // Like 버튼이 활성화되고, Like는 0이다
     await expect(buttonLike).toBeEnabled();
     await expect(buttonLike).toHaveText("0");
     await expect(buttonText).toHaveText("Like");
     await buttonLike.click();
-    // Like を付けたら　　1件カウントアップされ Like済み状態になる
+    // Like를 클릭하면 카운트가 1 증가하고 이미 Like한 상태가 된다
     await expect(buttonLike).toHaveText("1");
     await expect(buttonText).toHaveText("Liked");
   });
 
-  test("自分の記事に Like できない", async ({ page }) => {
+  test("자신의 기사에 Like할 수 있다", async ({ page }) => {
     await page.goto(url("/login"));
-    await login({ page, userName: "TaroYamada" });
+    await login({ page, userName: "Bae Eonsu" });
     await expect(page).toHaveURL(url("/"));
-    // ここから ID:90 の記事ページ
+    // 여기서부터 ID가 90인 기사의 페이지
     await page.goto(url("/posts/90"));
     const buttonLike = page.getByRole("button", { name: "Like" });
     const buttonText = page.getByTestId("likeStatus");
-    // Like ボタンは非活性になっていて、Like の文字もない
+    // Like 버튼이 비활성화되고 Like라는 문자도 사라진다
     await expect(buttonLike).toBeDisabled();
     await expect(buttonText).not.toHaveText("Like");
   });
 
-  test("アクセシビリティ検証", async ({ page }) => {
+  test("접근성 검증", async ({ page }) => {
     await page.goto(url(path));
     await injectAxe(page as any);
     await checkA11y(page as any);

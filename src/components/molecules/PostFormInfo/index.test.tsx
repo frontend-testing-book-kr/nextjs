@@ -17,23 +17,23 @@ function TestComponent() {
 
 const setup = () => {
   const { getByRole } = render(<TestComponent />);
-  const title = getByRole("textbox", { name: "記事タイトル" });
-  const description = getByRole("textbox", { name: "記事概要" });
+  const title = getByRole("textbox", { name: "제목" });
+  const description = getByRole("textbox", { name: "요약" });
   const typeTitle = (text: string) => user.type(title, text);
   const typeDescription = (text: string) => user.type(description, text);
   return { typeTitle, typeDescription };
 };
 
-test("「記事タイトル」に文字入力すると、カウンターがカウントアップされる", async () => {
+test("'제목'에 문자를 입력하면 글자수가 증가한다", async () => {
   const { typeTitle } = setup();
   expect(screen.getByText("0 / 64")).toBeInTheDocument();
-  await typeTitle("テスト");
+  await typeTitle("테스트");
   expect(screen.getByText("3 / 64")).toBeInTheDocument();
 });
 
-test("「記事概要」に文字入力すると、カウンターがカウントアップされる", async () => {
+test("'요약'에 문자를 입력하면 글자수가 증가한다", async () => {
   const { typeDescription } = setup();
   expect(screen.getByText("0 / 128")).toBeInTheDocument();
-  await typeDescription("あいうえお");
+  await typeDescription("가나다라마");
   expect(screen.getByText("5 / 128")).toBeInTheDocument();
 });

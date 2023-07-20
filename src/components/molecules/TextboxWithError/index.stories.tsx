@@ -6,7 +6,7 @@ export default {
   args: {
     id: "title",
     name: "title",
-    defaultValue: "タイトル",
+    defaultValue: "제목",
     maxLength: 10,
   },
   parameters: {
@@ -21,5 +21,5 @@ type Story = ComponentStoryObj<typeof TextboxWithError>;
 export const Default: Story = {};
 
 export const Error: Story = {
-  args: { error: "エラーがあります" },
+  args: { error: "에러가 발생했습니다" },
 };

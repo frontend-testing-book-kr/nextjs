@@ -15,7 +15,7 @@ export const InputFileButton = forwardRef<HTMLInputElement, Props>(
   function InputFileButtonBase({ buttonProps, inputProps, className }, ref) {
     return (
       <div className={clsx(styles.module, className)}>
-        <input aria-label="画像選択" {...inputProps} type="file" ref={ref} />
+        <input aria-label="이미지 선택" {...inputProps} type="file" ref={ref} />
         <Button {...buttonProps} />
       </div>
     );

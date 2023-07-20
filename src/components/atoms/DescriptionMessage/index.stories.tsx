@@ -3,7 +3,7 @@ import { DescriptionMessage } from "./";
 
 export default {
   component: DescriptionMessage,
-  args: { children: "概要" },
+  args: { children: "요약" },
 } as ComponentMeta<typeof DescriptionMessage>;
 
 type Story = ComponentStoryObj<typeof DescriptionMessage>;

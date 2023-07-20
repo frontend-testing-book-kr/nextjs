@@ -6,28 +6,28 @@ const { FullProps } = composeStories(stories);
 
 test("TextboxWithInfo", async () => {
   render(<FullProps />);
-  expect(screen.getByRole("textbox")).toHaveAccessibleName("記事タイトル");
+  expect(screen.getByRole("textbox")).toHaveAccessibleName("제목");
   expect(screen.getByRole("textbox")).toHaveAccessibleDescription(
-    "半角英数64文字以内で入力してください"
+    "영문과 숫자를 조합하여 64자 이내로 입력해주세요"
   );
   expect(screen.getByRole("textbox")).toHaveErrorMessage(
-    "不正な文字が含まれています"
+    "유효하지 않은 문자가 포함되어 있습니다"
   );
 });
 
 test("TextboxWithInfo", async () => {
   const args = {
-    title: "記事タイトル",
+    title: "제목",
     info: "0 / 64",
-    description: "半角英数64文字以内で入力してください",
-    error: "不正な文字が含まれています",
+    description: "영문과 숫자를 조합하여 64자 이내로 입력해주세요",
+    error: "유효하지 않은 문자가 포함되어 있습니다",
   };
   render(<TextboxWithInfo {...args} />);
   const textbox = screen.getByRole("textbox");
-  // label の htmlFor により関連付け
+  // label의 htmlFor와 연관되어 있다
   expect(textbox).toHaveAccessibleName(args.title);
-  // aria-describedby により関連付け
+  // aria-describedby와 연관되어 있다
   expect(textbox).toHaveAccessibleDescription(args.description);
-  // aria-errormessage により関連付け
+  // aria-errormessage와 연관되어 있다
   expect(textbox).toHaveErrorMessage(args.error);
 });

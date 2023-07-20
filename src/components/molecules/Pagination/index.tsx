@@ -25,7 +25,7 @@ export const Pagination = ({
   const page = parseAsPositiveInt(router.query.page) || 0;
   if (!pagination) return null;
   return (
-    <nav aria-label="ページネーション">
+    <nav aria-label="페이지네이션">
       <ul className={styles.pagination}>
         {pagination?.items.map((item, index) => (
           <li key={index}>
@@ -34,7 +34,7 @@ export const Pagination = ({
                 href={{ pathname, query: { ...router.query, page: item } }}
                 legacyBehavior
               >
-                {/* TODO: legacyBehavior 不要でも aria属性が適用できるようになれば a要素は削除する */}
+                {/* TODO: legacyBehavior가 없어도 aria 속성을 식별할 수 있게 되면 <a>는 삭제한다 */}
                 <a {...isCurrent(page, item)}>{item.toString()}</a>
               </Link>
             ) : (

@@ -16,15 +16,15 @@ const setup = () => {
   const { showToast } = mockUseToastAction();
   render(<LoginUser {...getMyProfileData} />);
   const clickLogout = async () => {
-    const region = screen.getByRole("region", { name: "ログインユーザー" });
+    const region = screen.getByRole("region", { name: "로그인한 사용자" });
     await user.hover(region);
-    const button = screen.getByRole("button", { name: "ログアウト" });
+    const button = screen.getByRole("button", { name: "로그아웃" });
     await user.click(button);
   };
   return { showToast, clickLogout };
 };
 
-test("ログアウトに成功すると、リロードされる", async () => {
+test("로그아웃에 성공하면 새로고침된다", async () => {
   const mock = mockPostLogoutResolved();
   const { showToast, clickLogout } = setup();
   await clickLogout();
@@ -33,7 +33,7 @@ test("ログアウトに成功すると、リロードされる", async () => {
   expect(window.location.reload).toHaveBeenCalled();
 });
 
-test("ログアウトに失敗すると、Toast が表示される", async () => {
+test("로그아웃에 실패하면 Toast가 표시된다", async () => {
   const mock = mockPostLogoutRejected();
   const { showToast, clickLogout } = setup();
   await clickLogout();

@@ -12,7 +12,7 @@ export const getPostsData: GetPostsReturn = {
       published: true,
       authorId: 1,
       likeCount: 1,
-      authorName: "TaroYamada",
+      authorName: "Bae Eonsu",
     },
     {
       id: 2,
@@ -23,7 +23,7 @@ export const getPostsData: GetPostsReturn = {
       published: true,
       authorId: 1,
       likeCount: 1,
-      authorName: "TaroYamada",
+      authorName: "Bae Eonsu",
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ export const getPostsData: GetPostsReturn = {
       published: false,
       authorId: 1,
       likeCount: 1,
-      authorName: "TaroYamada",
+      authorName: "Bae Eonsu",
     },
     {
       id: 4,
@@ -45,7 +45,7 @@ export const getPostsData: GetPostsReturn = {
       published: true,
       authorId: 1,
       likeCount: 1,
-      authorName: "TaroYamada",
+      authorName: "Bae Eonsu",
     },
     {
       id: 5,
@@ -56,7 +56,7 @@ export const getPostsData: GetPostsReturn = {
       published: true,
       authorId: 1,
       likeCount: 1,
-      authorName: "TaroYamada",
+      authorName: "Bae Eonsu",
     },
     {
       id: 6,
@@ -67,7 +67,7 @@ export const getPostsData: GetPostsReturn = {
       published: true,
       authorId: 1,
       likeCount: 1,
-      authorName: "TaroYamada",
+      authorName: "Bae Eonsu",
     },
     {
       id: 7,
@@ -78,7 +78,7 @@ export const getPostsData: GetPostsReturn = {
       published: true,
       authorId: 1,
       likeCount: 1,
-      authorName: "TaroYamada",
+      authorName: "Bae Eonsu",
     },
   ],
   ...getPagination({

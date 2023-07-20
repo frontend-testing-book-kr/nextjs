@@ -11,7 +11,7 @@ export const LoginUser = ({ name, imageUrl }: Props) => {
   return (
     <section
       role="region"
-      aria-label="ログインユーザー"
+      aria-label="로그인한 사용자"
       className={styles.user}
     >
       <p className={styles.userName}>{name}</p>
@@ -31,13 +31,13 @@ export const LoginUser = ({ name, imageUrl }: Props) => {
                   window.location.reload();
                 } catch {
                   showToast({
-                    message: "ログアウトに失敗しました",
+                    message: "로그아웃에 실패했습니다",
                     style: "failed",
                   });
                 }
               }}
             >
-              ログアウト
+              로그아웃
             </Button>
           </div>
         </div>

@@ -9,11 +9,11 @@ export default {
     },
   },
   args: {
-    "aria-label": "ソート順",
+    "aria-label": "정렬",
     children: (
       <>
-        <option>新着順</option>
-        <option>スター順</option>
+        <option>최신순</option>
+        <option>인기순</option>
       </>
     ),
   },

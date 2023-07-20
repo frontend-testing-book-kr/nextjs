@@ -9,7 +9,7 @@ export const AlertDialog = () => {
   if (!isShown) return null;
   return (
     <div className={styles.module}>
-      <div className={styles.alertdialog} role="alertdialog" aria-label="確認">
+      <div className={styles.alertdialog} role="alertdialog" aria-label="확인">
         <p className={styles.message}>{message}</p>
         <footer className={styles.footer}>
           {cancelButtonLabel && (

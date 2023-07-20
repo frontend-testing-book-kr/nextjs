@@ -12,8 +12,8 @@ export default {
     nextRouter: { pathname: "/my/posts/create" },
   },
   args: {
-    title: "新規記事",
-    description: "公開ステータスを変更するまで、記事は公開されません",
+    title: "신규기사",
+    description: "공개여부가 변경될 때까지 기사는 공개되지 않는다",
     onClickSave: () => {},
   },
 } as ComponentMeta<typeof PostForm>;
@@ -26,8 +26,8 @@ export const SucceedSaveAsDraft: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await user.type(
-      canvas.getByRole("textbox", { name: "記事タイトル" }),
-      "私の技術記事"
+      canvas.getByRole("textbox", { name: "제목" }),
+      "나의 기사"
     );
   },
 };
@@ -35,10 +35,10 @@ export const SucceedSaveAsDraft: Story = {
 export const FailedSaveAsDraft: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await user.click(canvas.getByRole("button", { name: "下書き保存する" }));
-    const textbox = canvas.getByRole("textbox", { name: "記事タイトル" });
+    await user.click(canvas.getByRole("button", { name: "비공개 상태로 저장" }));
+    const textbox = canvas.getByRole("textbox", { name: "제목" });
     await waitFor(() =>
-      expect(textbox).toHaveErrorMessage("1文字以上入力してください")
+      expect(textbox).toHaveErrorMessage("1개 이상의 문자를 입력해주세요")
     );
   },
 };
@@ -47,12 +47,12 @@ export const SavePublish: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await user.type(
-      canvas.getByRole("textbox", { name: "記事タイトル" }),
-      "私の技術記事"
+      canvas.getByRole("textbox", { name: "제목" }),
+      "나의 기사"
     );
-    await user.click(canvas.getByRole("switch", { name: "公開ステータス" }));
+    await user.click(canvas.getByRole("switch", { name: "공개여부" }));
     await expect(
-      canvas.getByRole("button", { name: "記事を公開する" })
+      canvas.getByRole("button", { name: "공개하기" })
     ).toBeInTheDocument();
   },
 };

@@ -22,7 +22,7 @@ export const MyPost = ({ post }: Props) => {
             description={post.description}
             className={styles.header}
           />
-          <LinkButton href={`/my/posts/${post.id}/edit`}>編集する</LinkButton>
+          <LinkButton href={`/my/posts/${post.id}/edit`}>편집하기</LinkButton>
         </div>
         <Markdown body={post.body!} />
       </div>

@@ -10,6 +10,18 @@ import { useToastProvider } from "./useToastProvider";
 export { useToastAction, useToastState } from "./hooks";
 export type { ToastState, ToastStyle };
 
+/* 리스트 7-4
+const { showToast } = useToastAction();
+const onSubmit = handleSubmit(async () => {
+  try {
+    // ...Web API로 값을 제출한다
+    showToast({ message: "저장되었습니다", style: "succeed" });
+  } catch (err) {
+    showToast({ message: "에러가 발생했습니다", style: "failed" });
+  }
+});
+*/
+
 export const ToastProvider = ({
   children,
   defaultState,
@@ -23,7 +35,7 @@ export const ToastProvider = ({
     <ToastStateContext.Provider value={{ isShown, message, style }}>
       <ToastActionContext.Provider value={{ showToast, hideToast }}>
         {children}
-        {/* isShown が true になった時、表示される */}
+        {/* isShown이 true가 되면 표시된다 */}
         {isShown && <Toast message={message} style={style} />}
       </ToastActionContext.Provider>
     </ToastStateContext.Provider>

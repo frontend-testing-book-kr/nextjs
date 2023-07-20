@@ -17,9 +17,9 @@ export async function setup(injectValues?: Partial<Input>) {
     password: "abcd1234",
     ...injectValues,
   };
-  const email = screen.getByRole("textbox", { name: "メールアドレス" });
-  const password = screen.getByPlaceholderText("8文字以上で入力");
-  const button = screen.getByRole("button", { name: "ログイン" });
+  const email = screen.getByRole("textbox", { name: "메일주소" });
+  const password = screen.getByPlaceholderText("8자 이상");
+  const button = screen.getByRole("button", { name: "로그인" });
   await user.type(email, input.email);
   await user.type(password, input.password);
   await user.click(button);
@@ -27,23 +27,23 @@ export async function setup(injectValues?: Partial<Input>) {
 
 setupMockServer(...Login.handlers, ...MyProfile.handlers);
 
-test("ログインに成功した場合、redirectUrl に遷移する", async () => {
+test("로그인에 성공하면 redirectUrl로 이동한다", async () => {
   await setup();
   await waitFor(() => expect(window.location.pathname).toEqual("/"));
 });
 
-test("ログインに失敗した場合、失敗した旨が通知される", async () => {
+test("로그인에 실패하면 실패했다는 알림이 뜬다", async () => {
   await setup({ email: "500@example.com" });
   const alert = await screen.findByRole("alert");
-  expect(alert).toHaveTextContent("ログインに失敗しました");
+  expect(alert).toHaveTextContent("로그인에 실패했습니다");
 });
 
-test("バリデーションエラーの場合、エラーメッセージが表示される", async () => {
+test("유효성 검사 에러가 발생하면 에러 메시지가 표시된다", async () => {
   await setup({ email: "test", password: "1234" });
-  const email = screen.getByRole("textbox", { name: "メールアドレス" });
-  const password = screen.getByPlaceholderText("8文字以上で入力");
+  const email = screen.getByRole("textbox", { name: "메일주소" });
+  const password = screen.getByPlaceholderText("8자 이상");
   await waitFor(() =>
-    expect(email).toHaveErrorMessage("不正なメールアドレス形式です")
+    expect(email).toHaveErrorMessage("유효하지 않은 메일주소입니다")
   );
-  expect(password).toHaveErrorMessage("8文字以上で入力してください");
+  expect(password).toHaveErrorMessage("8개 이상의 문자를 입력해주세요");
 });

@@ -28,14 +28,14 @@ const setup = (isSubmitting = false) => {
     />
   );
   const clickSwitch = () =>
-    user.click(getByRole("switch", { name: "公開ステータス" }));
+    user.click(getByRole("switch", { name: "공개여부" }));
   const clickSaveButton = () =>
     user.click(
-      queryByRole("button", { name: "記事を公開する" }) ||
-        getByRole("button", { name: "下書き保存する" })
+      queryByRole("button", { name: "공개하기" }) ||
+        getByRole("button", { name: "비공개 상태로 저장" })
     );
   const clickDeleteButton = () =>
-    user.click(getByRole("button", { name: "記事を削除する" }));
+    user.click(getByRole("button", { name: "삭제하기" }));
   return {
     getByRole,
     clickSwitch,
@@ -46,30 +46,30 @@ const setup = (isSubmitting = false) => {
   };
 };
 
-test("「下書き保存する」ボタンを押下すると、イベントハンドラーが実行される", async () => {
+test("'비공개 상태로 저장'버튼을 클릭하면 이벤트 핸들러가 실행된다", async () => {
   const { getByRole, clickSaveButton, onClickSave } = setup();
   await clickSaveButton();
-  expect(getByRole("button", { name: "下書き保存する" })).toBeInTheDocument();
+  expect(getByRole("button", { name: "비공개 상태로 저장" })).toBeInTheDocument();
   expect(onClickSave).toHaveBeenCalled();
 });
 
-test("「記事を公開する」ボタンを押下すると、イベントハンドラーが実行される", async () => {
+test("'공개하기'버튼을 클릭하면 이벤트 핸들러가 실행된다", async () => {
   const { getByRole, clickSwitch, clickSaveButton, onClickSave } = setup();
   await clickSwitch();
-  expect(getByRole("button", { name: "記事を公開する" })).toBeInTheDocument();
+  expect(getByRole("button", { name: "공개하기" })).toBeInTheDocument();
   await clickSaveButton();
   expect(onClickSave).toHaveBeenCalled();
 });
 
-test("「記事を削除する」ボタンを押下すると、イベントハンドラーが実行される", async () => {
+test("'삭제하기'버튼을 클릭하면 이벤트 핸들러가 실행된다", async () => {
   const { clickDeleteButton, onClickDelete } = setup();
   await clickDeleteButton();
   expect(onClickDelete).toHaveBeenCalled();
 });
 
-test("送信中は全てのコントロールが非活性", async () => {
+test("제출중에는 모든 컨트롤러가 비활성화된다", async () => {
   const { getByRole } = setup(true);
-  expect(getByRole("switch", { name: "公開ステータス" })).toBeDisabled();
-  expect(getByRole("button", { name: "記事を削除する" })).toBeDisabled();
-  expect(getByRole("button", { name: "下書き保存する" })).toBeDisabled();
+  expect(getByRole("switch", { name: "공개여부" })).toBeDisabled();
+  expect(getByRole("button", { name: "삭제하기" })).toBeDisabled();
+  expect(getByRole("button", { name: "비공개 상태로 저장" })).toBeDisabled();
 });

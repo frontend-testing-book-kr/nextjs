@@ -13,20 +13,20 @@ const user = userEvent.setup();
 async function setup() {
   render(<Default />);
   async function clearTitle() {
-    await user.clear(screen.getByRole("textbox", { name: "記事タイトル" }));
+    await user.clear(screen.getByRole("textbox", { name: "제목" }));
   }
   async function saveAsPublished() {
-    await user.click(screen.getByRole("button", { name: "記事を公開する" }));
+    await user.click(screen.getByRole("button", { name: "공개하기" }));
     await screen.findByRole("alertdialog");
   }
   async function saveAsDraft() {
-    await user.click(screen.getByRole("switch", { name: "公開ステータス" }));
-    await user.click(screen.getByRole("button", { name: "下書き保存する" }));
+    await user.click(screen.getByRole("switch", { name: "공개여부" }));
+    await user.click(screen.getByRole("button", { name: "비공개 상태로 저장" }));
   }
   async function deletePost() {
-    await user.click(screen.getByRole("button", { name: "記事を削除する" }));
+    await user.click(screen.getByRole("button", { name: "삭제하기" }));
   }
-  async function clickButton(name: "はい" | "いいえ") {
+  async function clickButton(name: "네" | "아니오") {
     await user.click(screen.getByRole("button", { name }));
   }
   return {
@@ -44,18 +44,18 @@ beforeEach(() => {
 });
 
 describe("AlertDialog", () => {
-  test("「いいえ」を押下すると、AlertDialog が閉じる", async () => {
+  test("'아니오'를 클릭하면 AlertDialog가 사라진다", async () => {
     const { saveAsPublished, clickButton } = await setup();
     await saveAsPublished();
-    await clickButton("いいえ");
+    await clickButton("아니오");
     expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
   });
 
-  test("不適正内容で送信を試みると、AlertDialog が閉じる", async () => {
+  test("유효하지 않은 내용을 포함한채로 제출하면 AlertDialog가 사라진다", async () => {
     const { clearTitle, saveAsPublished, clickButton } = await setup();
     await clearTitle();
     await saveAsPublished();
-    await clickButton("はい");
+    await clickButton("네");
     await waitFor(() =>
       expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument()
     );
@@ -63,59 +63,59 @@ describe("AlertDialog", () => {
 });
 
 describe("Toast", () => {
-  test("公開に成功した場合「公開に成功しました」が表示される", async () => {
+  test("공개에 성공하면 '공개되었습니다'가 표시된다", async () => {
     const { saveAsPublished, clickButton } = await setup();
     await saveAsPublished();
-    await clickButton("はい");
+    await clickButton("네");
     await waitFor(() =>
-      expect(screen.getByRole("alert")).toHaveTextContent("公開に成功しました")
+      expect(screen.getByRole("alert")).toHaveTextContent("공개되었습니다")
     );
   });
 
-  test("公開に失敗した場合「公開に失敗しました」が表示される", async () => {
+  test("공개에 실패하면 '공개에 실패했습니다'가 표시된다", async () => {
     server.use(MyPost.handlePutMyPost({ status: 500 }));
     const { saveAsPublished, clickButton } = await setup();
     await saveAsPublished();
-    await clickButton("はい");
+    await clickButton("네");
     await waitFor(() =>
-      expect(screen.getByRole("alert")).toHaveTextContent("公開に失敗しました")
+      expect(screen.getByRole("alert")).toHaveTextContent("공개에 실패했습니다")
     );
   });
 
-  test("削除に成功した場合「削除に成功しました」が表示される", async () => {
+  test("삭제에 성공하면 '삭제되었습니다'가 표시된다", async () => {
     const { deletePost, clickButton } = await setup();
     await deletePost();
-    await clickButton("はい");
+    await clickButton("네");
     await waitFor(() =>
-      expect(screen.getByRole("alert")).toHaveTextContent("削除に成功しました")
+      expect(screen.getByRole("alert")).toHaveTextContent("삭제되었습니다")
     );
   });
 
-  test("削除に失敗した場合「削除に失敗しました」が表示される", async () => {
+  test("삭제에 실패하면 '삭제에 실패했습니다'가 표시된다", async () => {
     server.use(MyPost.handleDeleteMyPost({ status: 500 }));
     const { deletePost, clickButton } = await setup();
     await deletePost();
-    await clickButton("はい");
+    await clickButton("네");
     await waitFor(() =>
-      expect(screen.getByRole("alert")).toHaveTextContent("削除に失敗しました")
+      expect(screen.getByRole("alert")).toHaveTextContent("삭제에 실패했습니다")
     );
   });
 });
 
-describe("画面遷移", () => {
-  test("公開に成功した場合、画面遷移する", async () => {
+describe("화면이동", () => {
+  test("공개에 성공하면 화면을 이동한다", async () => {
     const { saveAsPublished, clickButton } = await setup();
     await saveAsPublished();
-    await clickButton("はい");
+    await clickButton("네");
     await waitFor(() =>
       expect(mockRouter).toMatchObject({ pathname: "/my/posts/1" })
     );
   });
 
-  test("削除に成功した場合、画面遷移する", async () => {
+  test("삭제에 성공하면 화면을 이동한다", async () => {
     const { deletePost, clickButton } = await setup();
     await deletePost();
-    await clickButton("はい");
+    await clickButton("네");
     await waitFor(() =>
       expect(mockRouter).toMatchObject({ pathname: "/my/posts" })
     );

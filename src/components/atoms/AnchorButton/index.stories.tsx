@@ -3,7 +3,7 @@ import { AnchorButton } from "./";
 
 export default {
   component: AnchorButton,
-  args: { children: "送信する" },
+  args: { children: "제출" },
 } as ComponentMeta<typeof AnchorButton>;
 
 type Story = ComponentStoryObj<typeof AnchorButton>;

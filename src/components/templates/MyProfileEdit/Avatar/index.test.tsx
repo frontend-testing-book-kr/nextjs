@@ -16,14 +16,14 @@ function TestComponent() {
 
 setupMockServer(handleGetMyProfile());
 
-test("「写真を変更する」ボタンがある", async () => {
+test("'이미지 변경하기'버튼이 있다", async () => {
   render(<TestComponent />);
   expect(
-    await screen.findByRole("button", { name: "写真を変更する" })
+    await screen.findByRole("button", { name: "이미지 변경하기" })
   ).toBeInTheDocument();
 });
 
-test("画像のアップロードに成功した場合、画像の src 属性が変化する", async () => {
+test("이미지 업로드에 성공하면 이미지의 src속성이 변경된다", async () => {
   mockUploadImage();
   render(<TestComponent />);
   expect(screen.getByRole("img").getAttribute("src")).toBeFalsy();
@@ -34,14 +34,14 @@ test("画像のアップロードに成功した場合、画像の src 属性が
   );
 });
 
-test("画像のアップロードに失敗した場合、アラートが表示される", async () => {
+test("이미지 업로드에 실패하면 경고창이 표시된다", async () => {
   mockUploadImage(500);
   render(<TestComponent />);
   const { selectImage } = selectImageFile();
   await selectImage();
   await waitFor(() =>
     expect(screen.getByRole("alert")).toHaveTextContent(
-      "画像のアップロードに失敗しました"
+      "이미지 업로드에 실패했습니다"
     )
   );
 });

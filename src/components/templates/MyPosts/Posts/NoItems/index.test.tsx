@@ -5,18 +5,18 @@ import { NoItems } from "./";
 
 const user = userEvent.setup();
 
-test("タイトル表示", async () => {
+test("제목 표시", async () => {
   render(<NoItems />);
   expect(
-    screen.getByRole("heading", { name: "投稿記事がありません" })
+    screen.getByRole("heading", { name: "게재된 기사가 없습니다" })
   ).toBeInTheDocument();
 });
 
-test("リンク押下", async () => {
+test("링크 클릭", async () => {
   render(<NoItems />);
   await user.click(
     screen.getByRole("link", {
-      name: "はじめての記事を書いてみましょう",
+      name: "기사를 작성해주세요",
     })
   );
   expect(mockRouter).toMatchObject({ pathname: "/my/posts/create" });

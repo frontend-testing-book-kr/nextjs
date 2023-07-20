@@ -19,7 +19,7 @@ export async function gotoAndFillPostContents({
     "public/__mocks__/images/img01.jpg",
   ]);
   await page.waitForLoadState("networkidle", { timeout: 30000 });
-  await page.getByRole("textbox", { name: "記事タイトル" }).fill(title);
+  await page.getByRole("textbox", { name: "제목" }).fill(title);
 }
 
 export async function gotoAndCreatePostAsDraft({
@@ -32,7 +32,7 @@ export async function gotoAndCreatePostAsDraft({
   userName: UserName;
 }) {
   await gotoAndFillPostContents({ page, title, userName });
-  await page.getByRole("button", { name: "下書き保存する" }).click();
+  await page.getByRole("button", { name: "비공개 상태로 저장" }).click();
   await page.waitForNavigation();
   await expect(page).toHaveTitle(title);
 }
@@ -47,9 +47,9 @@ export async function gotoAndCreatePostAsPublish({
   userName: UserName;
 }) {
   await gotoAndFillPostContents({ page, title, userName });
-  await page.getByText("公開ステータス").click();
-  await page.getByRole("button", { name: "記事を公開する" }).click();
-  await page.getByRole("button", { name: "はい" }).click();
+  await page.getByText("공개여부").click();
+  await page.getByRole("button", { name: "공개하기" }).click();
+  await page.getByRole("button", { name: "네" }).click();
   await page.waitForNavigation();
   await expect(page).toHaveTitle(title);
 }
@@ -61,7 +61,7 @@ export async function gotoEditPostPage({
   page: Page;
   title: string;
 }) {
-  await page.getByRole("link", { name: "編集する" }).click();
+  await page.getByRole("link", { name: "편집하기" }).click();
   await page.waitForNavigation();
-  await expect(page).toHaveTitle(`記事編集 | ${title}`);
+  await expect(page).toHaveTitle(`기사편집 | ${title}`);
 }

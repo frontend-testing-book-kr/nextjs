@@ -26,7 +26,7 @@ export const PostFormHeroImage = (props: Props) => {
     ...props,
     onRejected: () => {
       showToast({
-        message: `画像のアップロードに失敗しました`,
+        message: `이미지 업로드에 실패했습니다`,
         style: "failed",
       });
     },
@@ -46,7 +46,7 @@ export const PostFormHeroImage = (props: Props) => {
                 <span>{props.error}</span>
               ) : (
                 <span>
-                  {imageUrl ? "イメージを変更する" : "イメージを選択する"}
+                  {imageUrl ? "이미지 변경하기" : "이미지 선택하기"}
                 </span>
               )}
             </>

@@ -14,12 +14,12 @@ const setup = (published = true) => {
   return { post, link, click };
 };
 
-test("リンクのアクセシブルネームはタイトルを参照する", async () => {
+test("링크의 접근 가능한 이름은 제목을 참조한다", async () => {
   const { post, link } = setup();
   expect(link).toHaveAccessibleName(post.title);
 });
 
-test("リンクを押下すると画面遷移する", async () => {
+test("링크를 클릭하면 화면을 이동한다", async () => {
   const { post, click } = setup();
   await click();
   expect(mockRouter).toMatchObject({ pathname: `/posts/${post.id}` });

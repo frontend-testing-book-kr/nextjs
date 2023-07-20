@@ -7,6 +7,6 @@ const Page: NextPageWithLayout = () => {
   return <Login />;
 };
 Page.getLayout = BasicLayout;
-Page.getPageTitle = PageTitle(() => "ログイン | Tech Posts");
+Page.getPageTitle = PageTitle(() => "로그인 | Tech Posts");
 
 export default Page;

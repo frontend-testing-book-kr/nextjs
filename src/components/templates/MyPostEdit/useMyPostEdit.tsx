@@ -14,34 +14,34 @@ export function useMyPostEdit({ id }: { id: number }) {
   const onClickSave = (isPublish: boolean) => {
     if (!isPublish) return;
     setAction("save");
-    showAlertDialog({ message: "記事を公開します。よろしいですか？" });
+    showAlertDialog({ message: "기사를 공개합니다. 진행하시겠습니까?" });
   };
 
   const onClickDelete = () => {
     setAction("delete");
-    showAlertDialog({ message: "記事を削除します。よろしいですか？" });
+    showAlertDialog({ message: "기사를 삭제합니다. 진행하시겠습니까?" });
   };
 
   const handleSave = async (input: ApiMyPost.PutInput) => {
-    const status = input.published ? "公開" : "保存";
+    const status = input.published ? "공개" : "저장";
     try {
-      showToast({ message: "保存中…", style: "busy" });
+      showToast({ message: "저장중입니다...", style: "busy" });
       await updateMyPost({ id, input });
       await router.push(`/my/posts/${id}`);
-      showToast({ message: `${status}に成功しました`, style: "succeed" });
+      showToast({ message: `${status}되었습니다`, style: "succeed" });
     } catch (err) {
-      showToast({ message: `${status}に失敗しました`, style: "failed" });
+      showToast({ message: `${status}에 실패했습니다`, style: "failed" });
     }
   };
 
   const handleDelete = async () => {
     try {
-      showToast({ message: "削除中…", style: "busy" });
+      showToast({ message: "삭제중...", style: "busy" });
       await deleteMyPost({ id });
       await router.push(`/my/posts`);
-      showToast({ message: "削除に成功しました", style: "succeed" });
+      showToast({ message: "삭제되었습니다", style: "succeed" });
     } catch (err) {
-      showToast({ message: "削除に失敗しました", style: "failed" });
+      showToast({ message: "삭제에 실패했습니다", style: "failed" });
     }
   };
 

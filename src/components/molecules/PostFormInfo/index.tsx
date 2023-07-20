@@ -21,7 +21,7 @@ export const PostFormInfo = ({ register, control, errors }: Props) => {
     <div className={styles.info}>
       <TextboxWithInfo
         {...register("title")}
-        title="記事タイトル"
+        title="제목"
         className={styles.title}
         maxLength={64}
         info={<WatchCounter max={64} name="title" control={control} />}
@@ -29,7 +29,7 @@ export const PostFormInfo = ({ register, control, errors }: Props) => {
       />
       <TextareaWithInfo
         {...register("description")}
-        title="記事概要"
+        title="요약"
         className={styles.description}
         rows={2}
         maxLength={128}

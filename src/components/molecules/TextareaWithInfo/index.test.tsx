@@ -6,11 +6,11 @@ const { FullProps } = composeStories(stories);
 
 test("TextareaWithInfo", async () => {
   render(<FullProps />);
-  expect(screen.getByRole("textbox")).toHaveAccessibleName("記事本文");
+  expect(screen.getByRole("textbox")).toHaveAccessibleName("본문");
   expect(screen.getByRole("textbox")).toHaveAccessibleDescription(
-    "半角英数64文字以内で入力してください"
+    "영문과 숫자를 조합하여 64자 이내로 입력해주세요"
   );
   expect(screen.getByRole("textbox")).toHaveErrorMessage(
-    "不正な文字が含まれています"
+    "유효하지 않은 문자가 포함되어 있습니다"
   );
 });

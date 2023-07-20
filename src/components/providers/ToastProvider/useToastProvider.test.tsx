@@ -2,7 +2,7 @@ import { act, renderHook } from "@testing-library/react";
 import { ToastStyle } from "./ToastContext";
 import { useToastProvider } from "./useToastProvider";
 
-test("showToast, hideToast で表示を切り替え", () => {
+test("showToast, hideToast로 화면에 표시하거나 숨긴다", () => {
   const { result } = renderHook(() => useToastProvider());
   expect(result.current).toMatchObject({ isShown: false });
   act(() => {
@@ -15,7 +15,7 @@ test("showToast, hideToast で表示を切り替え", () => {
   expect(result.current).toMatchObject({ isShown: false });
 });
 
-test("message, style で見た目を変更", () => {
+test("message, style로 외관을 변경한다", () => {
   const { result } = renderHook(() => useToastProvider());
   expect(result.current).toMatchObject({ message: "", style: "succeed" });
   const message = "...loading";

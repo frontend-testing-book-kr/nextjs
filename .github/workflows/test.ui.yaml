@@ -109,7 +109,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # この指定がないと比較に失敗する
+          fetch-depth: 0 # 이 값을 지정하지 않으면 비교에 실패한다
       - uses: actions/setup-node@v3
         with:
           node-version: 18

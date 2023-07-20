@@ -3,7 +3,7 @@ import { LinkButton } from "./";
 
 export default {
   component: LinkButton,
-  args: { children: "送信する", href: "/", className: "hoge" },
+  args: { children: "제출", href: "/", className: "hoge" },
 } as ComponentMeta<typeof LinkButton>;
 
 type Story = ComponentStoryObj<typeof LinkButton>;

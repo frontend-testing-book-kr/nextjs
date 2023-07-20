@@ -8,7 +8,7 @@ const Page: NextPageWithLayout = () => {
   return <MyPostsCreate />;
 };
 Page.getLayout = BasicLayout;
-Page.getPageTitle = PageTitle(() => "新規記事作成");
+Page.getPageTitle = PageTitle(() => "신규기사작성");
 
 export const getServerSideProps = withLogin(async () => {
   return {};

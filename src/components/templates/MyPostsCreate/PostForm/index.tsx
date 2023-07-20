@@ -49,7 +49,7 @@ export const PostForm = (props: Props) => {
         </div>
         <TextareaWithInfo
           {...register("body")}
-          title="本文"
+          title="본문"
           rows={20}
           error={errors.body?.message}
         />

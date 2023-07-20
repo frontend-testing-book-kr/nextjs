@@ -9,11 +9,11 @@ type Story = ComponentStoryObj<typeof SelectFilterOption>;
 
 export const Default: Story = {
   args: {
-    title: "公開ステータス",
+    title: "공개여부",
     options: [
-      { value: "all", label: "すべて" },
-      { value: "public", label: "公開" },
-      { value: "private", label: "下書き" },
+      { value: "all", label: "모두" },
+      { value: "public", label: "공개" },
+      { value: "private", label: "비공개" },
     ],
   },
 };

@@ -38,7 +38,7 @@ function TestComponent({
 }
 
 describe("useUploadImage", () => {
-  test("画像を選択すると imageUrl の値が truty になる", async () => {
+  test("이미지를 선택하면 imageUrl값이 truty가 된다", async () => {
     mockUploadImage();
     const mock = jest.fn();
     render(<TestComponent onChange={mock} />);
@@ -51,7 +51,7 @@ describe("useUploadImage", () => {
     );
   });
 
-  test("アップロードに成功したとき、onResolved が呼ばれる", async () => {
+  test("업로드에 성공하면 onResolved가 호출된다", async () => {
     mockUploadImage();
     const handleResolved = jest.fn();
     render(<TestComponent onResolved={handleResolved} />);
@@ -60,7 +60,7 @@ describe("useUploadImage", () => {
     await waitFor(() => expect(handleResolved).toHaveBeenCalled());
   });
 
-  test("アップロードに失敗したとき、onRejected が呼ばれる", async () => {
+  test("업로드에 실패하면 onRejected가 호출된다", async () => {
     mockUploadImage(500);
     const handleRejected = jest.fn();
     render(<TestComponent onRejected={handleRejected} />);

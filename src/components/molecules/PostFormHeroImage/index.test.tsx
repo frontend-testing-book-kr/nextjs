@@ -21,38 +21,38 @@ function TestComponent({ error }: { error?: string }) {
 
 setupMockServer(handleGetMyProfile());
 
-test("画像が選択されていない時、ボタン表記は「イメージを選択する」", async () => {
+test("이미지가 선택되어 있지 않으면 버튼에 '이미지 선택하기'가 표시된다", async () => {
   render(<TestComponent />);
   expect(
-    await screen.findByRole("button", { name: "イメージを選択する" })
+    await screen.findByRole("button", { name: "이미지 선택하기" })
   ).toBeInTheDocument();
 });
 
-test("画像が選択されている時、ボタン表記は「イメージを変更する」", async () => {
+test("이미지가 선택되어 있으면 버튼에 '이미지 변경하기'가 표시된다", async () => {
   mockUploadImage();
   render(<TestComponent />);
   const { selectImage } = selectImageFile();
   await selectImage();
   expect(
-    await screen.findByRole("button", { name: "イメージを変更する" })
+    await screen.findByRole("button", { name: "이미지 변경하기" })
   ).toBeInTheDocument();
 });
 
-test("画像選択でエラーがある時、ボタン表記はエラー文言になる", async () => {
-  render(<TestComponent error="エラー" />);
+test("이미지 선택시 에러가 발생하면 버튼에 '에러'가 표시된다", async () => {
+  render(<TestComponent error="에러" />);
   expect(
-    await screen.findByRole("button", { name: "エラー" })
+    await screen.findByRole("button", { name: "에러" })
   ).toBeInTheDocument();
 });
 
-test("画像のアップロードに失敗した場合、アラートが表示される", async () => {
+test("이미지 업로드에 실패하면 경고창이 표시된다", async () => {
   mockUploadImage(500);
   render(<TestComponent />);
   const { selectImage } = selectImageFile();
   await selectImage();
   await waitFor(() =>
     expect(screen.getByRole("alert")).toHaveTextContent(
-      "画像のアップロードに失敗しました"
+      "이미지 업로드에 실패했습니다"
     )
   );
 });

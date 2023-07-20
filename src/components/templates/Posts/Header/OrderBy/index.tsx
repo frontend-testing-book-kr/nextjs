@@ -7,7 +7,7 @@ export const OrderBy = () => {
   const orderBy = typeof query.orderBy === "string" ? query.orderBy : "";
   return (
     <SelectFilterOption
-      title="並び順"
+      title="정렬"
       className={styles.module}
       selectProps={{
         defaultValue: orderBy,
@@ -16,8 +16,8 @@ export const OrderBy = () => {
         },
       }}
       options={[
-        { value: "updatedAt", label: "更新日時順" },
-        { value: "starCount", label: "スター数順" },
+        { value: "updatedAt", label: "수정일자순" },
+        { value: "starCount", label: "인기순" },
       ]}
     />
   );

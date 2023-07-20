@@ -24,7 +24,7 @@ const SaveButton = ({
         onClickSave(isPublish);
       }}
     >
-      {isPublish ? "記事を公開する" : "下書き保存する"}
+      {isPublish ? "공개하기" : "비공개 상태로 저장"}
     </Button>
   );
 };
@@ -50,7 +50,7 @@ export const PostFormFooter = ({
           <SaveButton name={name} control={control} onClickSave={onClickSave} />
         </div>
         <div className={styles.status}>
-          <label htmlFor={name}>公開ステータス</label>
+          <label htmlFor={name}>공개여부</label>
           <Switch {...register(name)} id={name} />
         </div>
         {onClickDelete && (
@@ -61,7 +61,7 @@ export const PostFormFooter = ({
               theme="transparent"
               onClick={onClickDelete}
             >
-              記事を削除する
+              삭제하기
             </Button>
           </div>
         )}

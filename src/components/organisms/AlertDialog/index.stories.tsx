@@ -24,14 +24,14 @@ export default {
 type Story = ComponentStoryObj<typeof AlertDialog>;
 
 export const Default: Story = {
-  decorators: [createDecorator({ message: "成功しました" })],
+  decorators: [createDecorator({ message: "성공했습니다" })],
 };
 
 export const CustomButtonLabel: Story = {
   decorators: [
     createDecorator({
-      message: "記事を公開します。よろしいですか？",
-      cancelButtonLabel: "キャンセル",
+      message: "기사를 공개합니다. 진행하시겠습니까?",
+      cancelButtonLabel: "CANCEL",
       okButtonLabel: "OK",
     }),
   ],
@@ -40,7 +40,7 @@ export const CustomButtonLabel: Story = {
 export const ExcludeCancel: Story = {
   decorators: [
     createDecorator({
-      message: "投稿に成功しました",
+      message: "제출되었습니다",
       cancelButtonLabel: undefined,
       okButtonLabel: "OK",
     }),

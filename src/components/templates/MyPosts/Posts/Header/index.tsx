@@ -4,9 +4,9 @@ import { useRouter } from "next/router";
 import styles from "./styles.module.css";
 
 const options = [
-  { value: "all", label: "すべて" },
-  { value: "public", label: "公開" },
-  { value: "private", label: "下書き" },
+  { value: "all", label: "모두" },
+  { value: "public", label: "공개" },
+  { value: "private", label: "비공개" },
 ];
 
 export const Header = () => {
@@ -14,9 +14,9 @@ export const Header = () => {
   const defaultValue = parseAsNonEmptyString(query.status) || "all";
   return (
     <header className={styles.header}>
-      <h2 className={styles.heading}>投稿記事一覧</h2>
+      <h2 className={styles.heading}>기사목록</h2>
       <SelectFilterOption
-        title="公開ステータス"
+        title="공개여부"
         options={options}
         selectProps={{
           defaultValue,

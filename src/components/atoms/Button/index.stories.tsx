@@ -3,7 +3,7 @@ import { Button } from "./";
 
 export default {
   component: Button,
-  args: { children: "送信する" },
+  args: { children: "제출" },
 } as ComponentMeta<typeof Button>;
 
 type Story = ComponentStoryObj<typeof Button>;

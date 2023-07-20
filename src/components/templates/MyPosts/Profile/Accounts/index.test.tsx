@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { Accounts } from "./";
 
-test("props にアカウント名を渡すと、リンクが表示される", async () => {
+test("props로 계정명을 넘기면 링크가 표시된다", async () => {
   render(<Accounts githubAccount="gh-test" twitterAccount="tw-user" />);
   expect(screen.getByRole("link", { name: "gh-test" })).toHaveAttribute(
     "href",
@@ -13,7 +13,7 @@ test("props にアカウント名を渡すと、リンクが表示される", as
   );
 });
 
-test("props にアカウント名を渡さないと、リンクが表示されない", async () => {
+test("props로 계정명을 넘기지 않으면 링크가 표시되지 않는다", async () => {
   render(<Accounts />);
   expect(screen.queryAllByRole("link")).toHaveLength(0);
 });

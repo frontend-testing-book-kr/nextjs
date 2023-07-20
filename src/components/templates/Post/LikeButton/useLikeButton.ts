@@ -26,7 +26,7 @@ export const useLikeButton = ({
       setIsLiked(true);
       setLocalLikeCount((prev) => prev + 1);
     } catch (err) {
-      showToast({ message: "エラーが発生しました", style: "failed" });
+      showToast({ message: "에러가 발생했습니다", style: "failed" });
     }
   });
   return { isLiked, isDisabled, localLikeCount, onSubmit };

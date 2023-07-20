@@ -7,25 +7,25 @@ import {
 } from "./postUtil";
 import { assertUnauthorizedRedirect, url } from "./util";
 
-test.describe("新規投稿ページ", () => {
+test.describe("신규기사 페이지", () => {
   const path = "/my/posts/create";
-  const userName: UserName = "TaroYamada";
+  const userName: UserName = "Bae Eonsu";
 
-  test("未ログイン時、ログイン画面にリダイレクトされる", async ({ page }) => {
+  test("로그인 상태가 아니면 로그인 화면으로 리다이렉트된다", async ({ page }) => {
     await assertUnauthorizedRedirect({ page, path });
   });
 
-  test("新規記事を下書き保存できる", async ({ page }) => {
-    const title = "下書き投稿テスト";
+  test("신규기사를 비공개 상태로 저장할 수 있다", async ({ page }) => {
+    const title = "비공개 상태로 저장하기 테스트";
     await gotoAndCreatePostAsDraft({ page, title, userName });
   });
 
-  test("新規記事を公開できる", async ({ page }) => {
-    const title = "公開投稿テスト";
+  test("신규기사를 공개할 수 있다", async ({ page }) => {
+    const title = "공개하기 테스트";
     await gotoAndCreatePostAsPublish({ page, title, userName });
   });
 
-  test("アクセシビリティ検証", async ({ page }) => {
+  test("접근성 검증", async ({ page }) => {
     await page.goto(url(path));
     await injectAxe(page as any);
     await checkA11y(page as any);

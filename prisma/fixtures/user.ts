@@ -14,8 +14,8 @@ const userFixture = (name: string): UserData => ({
 
 export const userNames = [
   "User-MyProfileEdit",
-  "JiroSuzuki",
-  "TaroYamada",
+  "JPub",
+  "Bae Eonsu",
 ] as const;
 export type UserName = typeof userNames[number];
 

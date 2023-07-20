@@ -4,48 +4,48 @@ import { UserName } from "../prisma/fixtures/user";
 import { gotoAndCreatePostAsPublish, gotoEditPostPage } from "./postUtil";
 import { login, url } from "./util";
 
-test.describe("トップページ", () => {
+test.describe("메인 페이지", () => {
   const path = "/";
-  const userName: UserName = "TaroYamada";
+  const userName: UserName = "Bae Eonsu";
 
-  test("未ログイン時、ログインボタンが表示されている", async ({ page }) => {
+  test("로그인 상태가 아니면 로그인 버튼이 표시된다", async ({ page }) => {
     await page.goto(url(path));
-    const buttonLogin = page.getByRole("link", { name: "ログイン" });
+    const buttonLogin = page.getByRole("link", { name: "로그인" });
     await expect(buttonLogin).toBeVisible();
   });
 
-  test("ログインユーザー情報が表示される", async ({ page }) => {
+  test("로그인한 사용자 정보가 표시된다", async ({ page }) => {
     await page.goto(url("/login"));
     await login({ page });
     await expect(page).toHaveURL(url(path));
-    const loginUser = page.locator("[aria-label='ログインユーザー']");
-    await expect(loginUser).toContainText("TaroYamada");
+    const loginUser = page.locator("[aria-label='로그인한 사용자']");
+    await expect(loginUser).toContainText("Bae Eonsu");
   });
 
-  test("新規記事を公開保存すると、最新投稿一覧に表示される", async ({
+  test("신규기사를 공개 상태로 저장하면 최신 기사 목록에 표시된다", async ({
     page,
   }) => {
-    const title = "公開投稿・最新投稿一覧表示テスト";
+    const title = "공개 저장 후 최신 기사 목록 테스트";
     await gotoAndCreatePostAsPublish({ page, title, userName });
     await page.goto(url(path));
     await expect(page.getByText(title)).toBeVisible();
   });
 
-  test("公開記事を非公開にすると、最新投稿一覧では非表示になる", async ({
+  test("공개된 기사를 비공개하면 최신 기사 목록에 표시되지 않는다", async ({
     page,
   }) => {
-    const title = "公開取り消し・最新投稿一覧表示テスト";
+    const title = "비공개 후 최신 기사 목록 테스트";
     await gotoAndCreatePostAsPublish({ page, title, userName });
     await gotoEditPostPage({ page, title });
-    await page.getByText("公開ステータス").click();
-    await page.getByRole("button", { name: "下書き保存する" }).click();
+    await page.getByText("공개여부").click();
+    await page.getByRole("button", { name: "비공개 상태로 저장" }).click();
     await page.waitForNavigation();
     await expect(page).toHaveTitle(title);
     await page.goto(url(path));
     await expect(page.getByText(title)).not.toBeVisible();
   });
 
-  test("アクセシビリティ検証", async ({ page }) => {
+  test("접근성 검증", async ({ page }) => {
     await page.goto(url(path));
     await injectAxe(page as any);
     await checkA11y(page as any);

@@ -4,7 +4,7 @@ import { InputFileButton } from "./";
 export default {
   component: InputFileButton,
   args: {
-    buttonProps: { children: "画像を選択" },
+    buttonProps: { children: "이미지 선택" },
   },
   parameters: {
     a11y: {

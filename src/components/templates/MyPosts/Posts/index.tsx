@@ -8,7 +8,7 @@ import styles from "./styles.module.css";
 
 const PostList = ({ posts }: { posts: GetMyPostsReturn["posts"] }) => {
   return (
-    <section aria-label="記事一覧">
+    <section aria-label="기사목록">
       <ul className={styles.list}>
         {posts.map((post) => (
           <PostItem key={post.id} post={post} />
@@ -24,7 +24,7 @@ export const Posts = ({
   paginationInfo,
 }: GetMyPostsReturn) => {
   return (
-    <section aria-label="投稿記事一覧">
+    <section aria-label="게재된 기사">
       <Header />
       {!posts.length ? (
         <NoItems />

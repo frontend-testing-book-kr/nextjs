@@ -15,18 +15,18 @@ async function setup() {
   const { container } = render(<Default />);
   const { selectImage } = selectImageFile();
   async function typeTitle(title: string) {
-    const textbox = screen.getByRole("textbox", { name: "記事タイトル" });
+    const textbox = screen.getByRole("textbox", { name: "제목" });
     await user.type(textbox, title);
   }
   async function saveAsPublished() {
-    await user.click(screen.getByRole("switch", { name: "公開ステータス" }));
-    await user.click(screen.getByRole("button", { name: "記事を公開する" }));
+    await user.click(screen.getByRole("switch", { name: "공개여부" }));
+    await user.click(screen.getByRole("button", { name: "공개하기" }));
     await screen.findByRole("alertdialog");
   }
   async function saveAsDraft() {
-    await user.click(screen.getByRole("button", { name: "下書き保存する" }));
+    await user.click(screen.getByRole("button", { name: "비공개 상태로 저장" }));
   }
-  async function clickButton(name: "はい" | "いいえ") {
+  async function clickButton(name: "네" | "아니오") {
     await user.click(screen.getByRole("button", { name }));
   }
   return {
@@ -46,35 +46,35 @@ beforeEach(() => {
 });
 
 describe("AlertDialog", () => {
-  test("公開を試みた時、AlertDialog が表示される", async () => {
+  test("공개를 시도하면 AlertDialog가 표시된다", async () => {
     const { typeTitle, saveAsPublished, selectImage } = await setup();
     await typeTitle("201");
     await selectImage();
     await saveAsPublished();
     expect(
-      screen.getByText("記事を公開します。よろしいですか？")
+      screen.getByText("기사를 공개합니다. 진행하시겠습니까?")
     ).toBeInTheDocument();
   });
 
-  test("「いいえ」を押下すると、AlertDialog が閉じる", async () => {
+  test("'아니오'를 누르면 AlertDialog가 사라진다", async () => {
     const { typeTitle, saveAsPublished, clickButton, selectImage } =
       await setup();
     await typeTitle("201");
     await selectImage();
     await saveAsPublished();
-    await clickButton("いいえ");
+    await clickButton("아니오");
     expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
   });
 
-  test("不適正内容で送信を試みると、AlertDialog が閉じる", async () => {
+  test("유효하지 않은 내용을 포함한채로 제출하면 AlertDialog가 사라진다", async () => {
     const { saveAsPublished, clickButton, selectImage } = await setup();
-    // await typeTitle("201");　タイトルが入力されていない
+    // await typeTitle("201");　제목을 입력하지 않은 상태
     await selectImage();
     await saveAsPublished();
-    await clickButton("はい");
+    await clickButton("네");
     await waitFor(() =>
       expect(
-        screen.getByRole("textbox", { name: "記事タイトル" })
+        screen.getByRole("textbox", { name: "제목" })
       ).toBeInvalid()
     );
     expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
@@ -82,45 +82,45 @@ describe("AlertDialog", () => {
 });
 
 describe("Toast", () => {
-  test("API 通信を開始した時「保存中…」が表示される", async () => {
+  test("API통신을 시작하면 '저장중입니다...'가 표시된다", async () => {
     const { typeTitle, saveAsPublished, clickButton, selectImage } =
       await setup();
     await typeTitle("201");
     await selectImage();
     await saveAsPublished();
-    await clickButton("はい");
+    await clickButton("네");
     await waitFor(() =>
-      expect(screen.getByRole("alert")).toHaveTextContent("保存中…")
+      expect(screen.getByRole("alert")).toHaveTextContent("저장중입니다...")
     );
   });
 
-  test("公開に成功した場合「公開に成功しました」が表示される", async () => {
+  test("공개에 성공하면 '공개되었습니다'가 표시된다", async () => {
     const { typeTitle, saveAsPublished, clickButton, selectImage } =
       await setup();
     await typeTitle("hoge");
     await selectImage();
     await saveAsPublished();
-    await clickButton("はい");
+    await clickButton("네");
     await waitFor(() =>
-      expect(screen.getByRole("alert")).toHaveTextContent("公開に成功しました")
+      expect(screen.getByRole("alert")).toHaveTextContent("공개되었습니다")
     );
   });
 
-  test("公開に失敗した場合「公開に失敗しました」が表示される", async () => {
+  test("공개에 실패하면 '공개에 실패했습니다'가 표시된다", async () => {
     const { typeTitle, saveAsPublished, clickButton, selectImage } =
       await setup();
     await typeTitle("500");
     await selectImage();
     await saveAsPublished();
-    await clickButton("はい");
+    await clickButton("네");
     await waitFor(() =>
-      expect(screen.getByRole("alert")).toHaveTextContent("公開に失敗しました")
+      expect(screen.getByRole("alert")).toHaveTextContent("공개에 실패했습니다")
     );
   });
 });
 
-describe("画面遷移", () => {
-  test("下書き保存した場合、下書きした記事ページに遷移する", async () => {
+describe("화면이동", () => {
+  test("비공개 상태로 저장시 비공개한 기사 페이지로 이동한다", async () => {
     const { typeTitle, saveAsDraft, selectImage } = await setup();
     await typeTitle("201");
     await selectImage();
@@ -130,13 +130,13 @@ describe("画面遷移", () => {
     );
   });
 
-  test("公開に成功した場合、画面遷移する", async () => {
+  test("공개에 성공하면 화면을 이동한다", async () => {
     const { typeTitle, saveAsPublished, clickButton, selectImage } =
       await setup();
     await typeTitle("201");
     await selectImage();
     await saveAsPublished();
-    await clickButton("はい");
+    await clickButton("네");
     await waitFor(() =>
       expect(mockRouter).toMatchObject({ pathname: "/my/posts/201" })
     );

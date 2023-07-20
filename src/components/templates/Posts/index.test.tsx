@@ -2,20 +2,20 @@ import { getPostsData } from "@/services/server/Posts/__mock__/fixture";
 import { render, screen } from "@testing-library/react";
 import { Posts } from "./";
 
-test("見出しの表示", async () => {
+test("제목 표시", async () => {
   render(<Posts {...getPostsData} />);
   expect(
-    screen.getByRole("heading", { name: "最新投稿一覧" })
+    screen.getByRole("heading", { name: "최신기사목록" })
   ).toBeInTheDocument();
 });
 
-test("主要コンテンツの表示", async () => {
+test("주요 컨텐츠 표시", async () => {
   render(<Posts {...getPostsData} />);
-  expect(screen.getByRole("region", { name: "記事一覧" })).toBeInTheDocument();
+  expect(screen.getByRole("region", { name: "기사목록" })).toBeInTheDocument();
   expect(
-    screen.getByRole("navigation", { name: "ページネーション" })
+    screen.getByRole("navigation", { name: "페이지네이션" })
   ).toBeInTheDocument();
   expect(
-    screen.getByRole("region", { name: "現在表示中の一覧概要" })
+    screen.getByRole("region", { name: "표시중인 목록" })
   ).toBeInTheDocument();
 });

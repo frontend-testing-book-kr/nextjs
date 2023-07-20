@@ -8,12 +8,12 @@ import * as stories from "./index.stories";
 const { Default } = composeStories(stories);
 setupMockServer(handleGetMyProfile());
 
-test("主要コンテンツが表示されている", async () => {
+test("주요 컨텐츠가 표시되어 있다", async () => {
   render(<Default posts={getMyPostsData} />);
   expect(
-    await screen.findByRole("region", { name: "プロフィール" })
+    await screen.findByRole("region", { name: "프로필" })
   ).toBeInTheDocument();
   expect(
-    screen.getByRole("region", { name: "投稿記事一覧" })
+    screen.getByRole("region", { name: "기사목록" })
   ).toBeInTheDocument();
 });

@@ -46,14 +46,14 @@ export const SPLoggedIn: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const navigation = canvas.queryByRole("navigation", {
-      name: "ナビゲーション",
+      name: "네비게이션",
     });
     await expect(navigation).not.toBeInTheDocument();
   },
 };
 
 export const SPLoggedInOpenedMenu: Story = {
-  storyName: "SPレイアウトでドロワーメニューを開ける",
+  storyName: "SP레이아웃에서 드로어 메뉴를 연다",
   parameters: {
     ...SPStory.parameters,
     screenshot: {
@@ -64,18 +64,18 @@ export const SPLoggedInOpenedMenu: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const button = await canvas.findByRole("button", {
-      name: "メニューを開く",
+      name: "메뉴 열기",
     });
     await user.click(button);
     const navigation = canvas.getByRole("navigation", {
-      name: "ナビゲーション",
+      name: "네비게이션",
     });
     await expect(navigation).toBeInTheDocument();
   },
 };
 
 export const SPLoggedInClosedMenu: Story = {
-  storyName: "SPレイアウトでドロワーメニューを閉じれる",
+  storyName: "SP레이아웃에서 드로어 메뉴를 닫는다",
   parameters: {
     ...SPStory.parameters,
     screenshot: {
@@ -86,11 +86,11 @@ export const SPLoggedInClosedMenu: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const buttonOpen = await canvas.findByRole("button", {
-      name: "メニューを開く",
+      name: "메뉴 열기",
     });
     await user.click(buttonOpen);
     const buttonClose = await canvas.findByRole("button", {
-      name: "メニューを閉じる",
+      name: "메뉴 닫기",
     });
     await expect(buttonClose).toBeInTheDocument();
     await user.click(buttonClose);
@@ -98,13 +98,13 @@ export const SPLoggedInClosedMenu: Story = {
 };
 
 export const PCLoggedInNotHaveOpenMenu: Story = {
-  storyName: "PCレイアウトで「メニューを開く」は表示されない",
+  storyName: "PC레이아웃에서는 '메뉴 열기'를 표시하지 않는다",
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await waitFor(() =>
       expect(
         canvas.queryByRole("button", {
-          name: "メニューを開く",
+          name: "메뉴 열기",
         })
       ).toBeNull()
     );

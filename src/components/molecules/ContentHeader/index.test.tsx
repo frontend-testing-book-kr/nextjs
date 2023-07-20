@@ -2,18 +2,18 @@ import { render, screen } from "@testing-library/react";
 import { ContentHeader } from "./";
 
 test("[role=banner]", () => {
-  render(<ContentHeader title="記事タイトル" />);
+  render(<ContentHeader title="제목" />);
   expect(screen.getByRole("banner")).toBeInTheDocument();
 });
 
-test("title の指定", async () => {
-  render(<ContentHeader title="記事タイトル" />);
+test("title 지정", async () => {
+  render(<ContentHeader title="제목" />);
   expect(
-    screen.getByRole("heading", { name: "記事タイトル" })
+    screen.getByRole("heading", { name: "제목" })
   ).toBeInTheDocument();
 });
 
-test("description の指定", async () => {
-  render(<ContentHeader title="記事タイトル" description="概要" />);
-  expect(screen.getByText("概要")).toBeInTheDocument();
+test("description 지정", async () => {
+  render(<ContentHeader title="제목" description="요약" />);
+  expect(screen.getByText("요약")).toBeInTheDocument();
 });

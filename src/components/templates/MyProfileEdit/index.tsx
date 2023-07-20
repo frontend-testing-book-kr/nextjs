@@ -19,8 +19,8 @@ export const MyProfileEdit = (props: Props) => {
   return (
     <form className={styles.module} onSubmit={onSubmit}>
       <ContentHeader
-        title="プロフィール編集"
-        description="登録されたプロフィールは一般公開され、誰でも閲覧できます"
+        title="프로필 편집"
+        description="등록된 프로필은 누구나 볼 수 있도록 공개됩니다"
         className={styles.contentHeader}
       />
       <div className={styles.content}>
@@ -35,7 +35,7 @@ export const MyProfileEdit = (props: Props) => {
         <div className={styles.profile}>
           <TextboxWithInfo
             {...register("name")}
-            title="ユーザー名"
+            title="사용자명"
             className={styles.name}
             maxLength={32}
             info={<WatchCounter max={32} name="name" control={control} />}
@@ -43,7 +43,7 @@ export const MyProfileEdit = (props: Props) => {
           />
           <TextareaWithInfo
             {...register("bio")}
-            title="自己紹介文"
+            title="자기소개"
             className={styles.bio}
             maxLength={128}
             rows={3}
@@ -67,7 +67,7 @@ export const MyProfileEdit = (props: Props) => {
         </div>
       </div>
       <ContentFooter className={styles.contentFooter}>
-        <Button variant="large">プロフィールを変更する</Button>
+        <Button variant="large">프로필 변경하기</Button>
       </ContentFooter>
     </form>
   );

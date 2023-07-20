@@ -7,7 +7,7 @@ import { render, screen } from "@testing-library/react";
 test("Succeed", () => {
   const state: ToastState = {
     isShown: true,
-    message: "成功しました",
+    message: "성공했습니다",
     style: "succeed",
   };
   render(<ToastProvider defaultState={state}>{null}</ToastProvider>);
@@ -17,7 +17,7 @@ test("Succeed", () => {
 test("Failed", () => {
   const state: ToastState = {
     isShown: true,
-    message: "失敗しました",
+    message: "실패했습니다",
     style: "failed",
   };
   render(<ToastProvider defaultState={state}>{null}</ToastProvider>);
@@ -27,7 +27,7 @@ test("Failed", () => {
 test("Busy", () => {
   const state: ToastState = {
     isShown: true,
-    message: "通信中…",
+    message: "통신중입니다",
     style: "busy",
   };
   render(<ToastProvider defaultState={state}>{null}</ToastProvider>);

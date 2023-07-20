@@ -10,8 +10,8 @@ export const PaginationInfo = ({
   hitCount: number;
 }) => {
   return (
-    <section aria-label="現在表示中の一覧概要" className={styles.module}>
-      <p>{`${hitCount}件中`}</p>
+    <section aria-label="표시중인 목록" className={styles.module}>
+      <p>{`${hitCount}건 중`}</p>
       <p role="presentation">/</p>
       <p>{`${start}〜${end}`}</p>
     </section>

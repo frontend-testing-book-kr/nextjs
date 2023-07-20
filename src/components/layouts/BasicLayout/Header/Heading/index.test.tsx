@@ -12,7 +12,7 @@ test("[role=heading]", async () => {
   ).toBeInTheDocument();
 });
 
-test("クリックするとTOPへ遷移する", async () => {
+test("클릭하면 메인 페이지로 이동한다", async () => {
   mockRouter.setCurrentUrl("/posts?page=1");
   render(<Heading />);
   await user.click(screen.getByRole("link"));

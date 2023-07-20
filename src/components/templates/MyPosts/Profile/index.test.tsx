@@ -6,15 +6,15 @@ import { Profile } from "./";
 
 const user = userEvent.setup();
 
-test("アクセシブルネーム「プロフィール」で識別できる", () => {
+test("'프로필'이라는 접근 가능한 이름을 식별할 수 있다", () => {
   render(<Profile {...getMyProfileData} />);
   expect(
-    screen.getByRole("region", { name: "プロフィール" })
+    screen.getByRole("region", { name: "프로필" })
   ).toBeInTheDocument();
 });
 
-test("「変更する」リンクを押下すると画面遷移する", async () => {
+test("'수정'이라는 링크를 클릭하면 화면이 이동된다", async () => {
   render(<Profile {...getMyProfileData} />);
-  await user.click(screen.getByRole("link", { name: "変更する" }));
+  await user.click(screen.getByRole("link", { name: "수정" }));
   expect(mockRouter).toMatchObject({ pathname: "/my/profile/edit" });
 });

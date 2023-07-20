@@ -22,13 +22,13 @@ export default {
 type Story = ComponentStoryObj<typeof Toast>;
 
 export const Succeed: Story = {
-  decorators: [createDecorator({ message: "成功しました", style: "succeed" })],
+  decorators: [createDecorator({ message: "성공했습니다", style: "succeed" })],
 };
 
 export const Failed: Story = {
-  decorators: [createDecorator({ message: "失敗しました", style: "failed" })],
+  decorators: [createDecorator({ message: "실패했습니다", style: "failed" })],
 };
 
 export const Busy: Story = {
-  decorators: [createDecorator({ message: "通信中…", style: "busy" })],
+  decorators: [createDecorator({ message: "통신중입니다", style: "busy" })],
 };

@@ -29,16 +29,16 @@ export const Login = () => {
           const data = await postLogin(values);
           window.location.href = data.redirectUrl;
         } catch (err) {
-          showToast({ message: "ログインに失敗しました", style: "failed" });
+          showToast({ message: "로그인에 실패했습니다", style: "failed" });
         }
       })}
     >
       <div className={styles.image}></div>
       <div className={styles.inputs}>
         <fieldset className={styles.fieldset}>
-          <legend className={styles.legend}>ログイン</legend>
+          <legend className={styles.legend}>로그인</legend>
           <div className={styles.email}>
-            <label htmlFor="email">メールアドレス</label>
+            <label htmlFor="email">메일주소</label>
             <TextboxWithError
               {...register("email")}
               id="email"
@@ -48,18 +48,18 @@ export const Login = () => {
             />
           </div>
           <div className={styles.password}>
-            <label htmlFor="password">パスワード</label>
+            <label htmlFor="password">비밀번호</label>
             <TextboxWithError
               {...register("password")}
               id="password"
               type="password"
-              placeholder="8文字以上で入力"
+              placeholder="8자 이상"
               error={errors.password?.message}
             />
           </div>
         </fieldset>
         <Button variant="large" className={styles.button}>
-          ログイン
+          로그인
         </Button>
       </div>
     </form>

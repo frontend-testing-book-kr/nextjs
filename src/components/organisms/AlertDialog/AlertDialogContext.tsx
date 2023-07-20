@@ -10,8 +10,8 @@ export type AlertDialogState = {
 export const initialState: AlertDialogState = {
   isShown: false,
   message: "",
-  cancelButtonLabel: "いいえ",
-  okButtonLabel: "はい",
+  cancelButtonLabel: "아니오",
+  okButtonLabel: "네",
 };
 
 export const AlertDialogStateContext =

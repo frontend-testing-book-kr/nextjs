@@ -1,8 +1,8 @@
 import * as z from "zod";
 
 export const updateMyProfileEditInputSchema = z.object({
-  name: z.string().min(1, "1文字以上入力してください"),
-  bio: z.string().min(1, "1文字以上入力してください"),
+  name: z.string().min(1, "1개 이상의 문자를 입력해주세요"),
+  bio: z.string().min(1, "1개 이상의 문자를 입력해주세요"),
   githubAccount: z.string().optional(),
   twitterAccount: z.string().optional(),
   imageUrl: z.string().optional(),

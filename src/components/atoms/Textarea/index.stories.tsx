@@ -3,7 +3,7 @@ import { Textarea } from "./";
 
 export default {
   component: Textarea,
-  args: { placeholder: "ここに文字を入力します" },
+  args: { placeholder: "문자를 입력해주세요" },
 } as ComponentMeta<typeof Textarea>;
 
 type Story = ComponentStoryObj<typeof Textarea>;

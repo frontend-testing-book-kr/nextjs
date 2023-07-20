@@ -3,7 +3,7 @@ import { ErrorMessage } from "./";
 
 export default {
   component: ErrorMessage,
-  args: { children: "エラー" },
+  args: { children: "에러" },
 } as ComponentMeta<typeof ErrorMessage>;
 
 type Story = ComponentStoryObj<typeof ErrorMessage>;
