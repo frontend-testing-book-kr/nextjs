@@ -13,9 +13,10 @@ type Props = { onCloseMenu: () => void };
 export const Nav = ({ onCloseMenu }: Props) => {
   const { pathname } = useRouter();
   return (
+    // "네비게이션"을 "메뉴"로 변경하고 테스트 실행기를 실행(리스트 8-31)
     <nav aria-label="네비게이션" className={styles.nav}>
       <button
-        aria-label="메뉴를 닫는다"
+        aria-label="메뉴 닫기"
         className={styles.closeMenu}
         onClick={onCloseMenu}
       ></button>

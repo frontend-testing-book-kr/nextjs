@@ -6,7 +6,7 @@ import { login, url } from "./util";
 
 test.describe("메인 페이지", () => {
   const path = "/";
-  const userName: UserName = "Bae Eonsu";
+  const userName: UserName = "JPub";
 
   test("로그인 상태가 아니면 로그인 버튼이 표시된다", async ({ page }) => {
     await page.goto(url(path));
@@ -19,7 +19,7 @@ test.describe("메인 페이지", () => {
     await login({ page });
     await expect(page).toHaveURL(url(path));
     const loginUser = page.locator("[aria-label='로그인한 사용자']");
-    await expect(loginUser).toContainText("Bae Eonsu");
+    await expect(loginUser).toContainText("JPub");
   });
 
   test("신규기사를 공개 상태로 저장하면 최신 기사 목록에 표시된다", async ({

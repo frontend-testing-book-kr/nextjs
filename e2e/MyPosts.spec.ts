@@ -7,9 +7,16 @@ import {
 } from "./postUtil";
 import { assertUnauthorizedRedirect, login, url } from "./util";
 
+/* 리스트 10-15
+test("로그인 상태가 아니면 로그인 화면으로 리다이렉트된다", async ({ page }) => {
+  const path = "/my/posts";
+  await assertUnauthorizedRedirect({ page, path });
+});
+*/
+
 test.describe("게재된 기사 목록 페이지", () => {
   const path = "/my/posts";
-  const userName: UserName = "Bae Eonsu";
+  const userName: UserName = "JPub";
 
   test("로그인 상태가 아니면 로그인 화면으로 리다이렉트된다", async ({ page }) => {
     await assertUnauthorizedRedirect({ page, path });
@@ -20,13 +27,13 @@ test.describe("게재된 기사 목록 페이지", () => {
     await login({ page });
     await expect(page).toHaveURL(url(path));
     const profile = page.getByRole("region", { name: "프로필" });
-    await expect(profile).toContainText("Bae Eonsu");
+    await expect(profile).toContainText("JPub");
   });
 
   test("신규기사를 비공개 상태로 저장하면 게재된 기사 목록에 기사가 추가된다", async ({
     page,
   }) => {
-    const title = "비공개 상태로 저장된 기사 목록 테스트";
+    const title = "비공개로 저장된 기사 목록 테스트";
     await gotoAndCreatePostAsDraft({ page, title, userName });
     await page.goto(url(path));
     await expect(page.getByText(title)).toBeVisible();

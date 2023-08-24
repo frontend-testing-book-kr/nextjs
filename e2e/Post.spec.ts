@@ -11,15 +11,15 @@ test.describe("글쓰기 페이지", () => {
     await expect(buttonLogin).toBeVisible();
   });
 
-  test("다른 사람의 기사를 Like할 수 있다", async ({ page }) => {
+  test("다른 사람의 기사에는 Like할 수 있다", async ({ page }) => {
     await page.goto(url("/login"));
-    await login({ page, userName: "Bae Eonsu" });
+    await login({ page, userName: "JPub" });
     await expect(page).toHaveURL(url("/"));
     // 여기서부터 ID가 10인 기사의 페이지
     await page.goto(url("/posts/10"));
     const buttonLike = page.getByRole("button", { name: "Like" });
     const buttonText = page.getByTestId("likeStatus");
-    // Like 버튼이 활성화되고, Like는 0이다
+    // Like 버튼이 활성화되고, 현재 Like된 횟수는 0이다
     await expect(buttonLike).toBeEnabled();
     await expect(buttonLike).toHaveText("0");
     await expect(buttonText).toHaveText("Like");
@@ -29,9 +29,9 @@ test.describe("글쓰기 페이지", () => {
     await expect(buttonText).toHaveText("Liked");
   });
 
-  test("자신의 기사에 Like할 수 있다", async ({ page }) => {
+  test("자신의 기사에는 Like할 수 없다", async ({ page }) => {
     await page.goto(url("/login"));
-    await login({ page, userName: "Bae Eonsu" });
+    await login({ page, userName: "JPub" });
     await expect(page).toHaveURL(url("/"));
     // 여기서부터 ID가 90인 기사의 페이지
     await page.goto(url("/posts/90"));

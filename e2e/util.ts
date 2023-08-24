@@ -10,7 +10,7 @@ export const getUser = (name: string) =>
 
 export async function login({
   page,
-  userName = "Bae Eonsu",
+  userName = "JPub",
 }: {
   page: Page;
   userName?: UserName;
@@ -23,7 +23,7 @@ export async function login({
 
 export async function logout({
   page,
-  userName = "Bae Eonsu",
+  userName = "JPub",
 }: {
   page: Page;
   userName?: UserName;
@@ -43,7 +43,10 @@ export async function assertUnauthorizedRedirect({
   page: Page;
   path: string;
 }) {
+  // 지정된 페이지에 접근한다
   await page.goto(url(path));
+  // 리다이렉트될 때까지 기다린다
   await page.waitForURL(url("/login"));
+  // 로그인 페이지로 이동했는지 확인한다
   await expect(page).toHaveTitle("로그인 | Tech Posts");
 }

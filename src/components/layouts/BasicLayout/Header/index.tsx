@@ -19,7 +19,7 @@ export const Header = memo(function HeaderBase() {
       {value ? (
         <>
           <button
-            aria-label="메뉴 드로어"
+            aria-label="메뉴 열기"
             aria-controls="drawer"
             aria-expanded={isOpen}
             className={styles.openMenu}

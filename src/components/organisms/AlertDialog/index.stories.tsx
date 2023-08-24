@@ -7,6 +7,7 @@ import {
 import { AlertDialog, AlertDialogProvider } from "./";
 import { AlertDialogState } from "./AlertDialogContext";
 
+// 스토리 등록용 함수
 function createDecorator(defaultState?: Partial<AlertDialogState>) {
   return function Decorator(Story: PartialStoryFn<ReactFramework, Args>) {
     return (
@@ -23,6 +24,7 @@ export default {
 
 type Story = ComponentStoryObj<typeof AlertDialog>;
 
+// 실제로 등록할 스토리
 export const Default: Story = {
   decorators: [createDecorator({ message: "성공했습니다" })],
 };

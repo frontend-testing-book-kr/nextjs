@@ -5,6 +5,36 @@ import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 import { userEvent as user, waitFor, within } from "@storybook/testing-library";
 import { Header } from "./";
 
+/* 리스트 8-15
+export const NotLoggedIn: Story = {
+  parameters: {
+    msw: { 
+      handlers: [
+        rest.get("/api/my/profile", async (_, res, ctx) => {
+          return res(ctx.status(401));
+        }),
+      ], 
+    },
+  },
+};
+*/
+
+/* 리스트 8-16
+export const NotLoggedIn: Story = {
+  parameters: {
+    msw: { handlers: [handleGetMyProfile({ status: 401 })] },
+    // 요청 핸들러 내용은 다음과 같다
+    // msw: { 
+    //   handlers: [
+    //     rest.get("/api/my/profile", async (_, res, ctx) => {
+    //       return res(ctx.status(401));
+    //     }),
+    //   ], 
+    // },
+  },
+};
+*/
+
 export default {
   component: Header,
   decorators: [LoginUserInfoProviderDecorator],

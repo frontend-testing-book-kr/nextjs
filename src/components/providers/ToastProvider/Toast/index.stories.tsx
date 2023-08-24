@@ -1,7 +1,4 @@
-import {
-  ToastProvider,
-  ToastState,
-} from "@/components/providers/ToastProvider";
+import { ToastProvider, ToastState } from "@/components/providers/ToastProvider";
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 import { Toast } from ".";
 

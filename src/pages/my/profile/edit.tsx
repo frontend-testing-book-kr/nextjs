@@ -22,10 +22,12 @@ Page.getPageTitle = PageTitle(
   ({ data }) => `${data?.authorName}님의 프로필 편집`
 );
 
+// 로그인 상태 확인을 포함한 getServerSideProps
 export const getServerSideProps = withLogin<Props>(async ({ user }) => {
   return {
+    // Prisma Client를 래핑한 함수를 통해 데이터베이스에서 데이터를 취득한다
     profile: await getMyProfileEdit({ id: user.id }),
-    authorName: user.name,
+    authorName: user.name, // 제목에 사용할 유저명을 Props에 포함시킨다 
   };
 });
 

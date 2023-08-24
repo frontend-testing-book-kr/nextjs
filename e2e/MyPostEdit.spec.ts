@@ -10,7 +10,7 @@ import { assertUnauthorizedRedirect, url } from "./util";
 
 test.describe("기사편집 페이지", () => {
   const path = "/my/posts/1/edit";
-  const userName: UserName = "Bae Eonsu";
+  const userName: UserName = "JPub";
 
   test("로그인 상태가 아니면 로그인 화면으로 리다이렉트된다", async ({ page }) => {
     await assertUnauthorizedRedirect({ page, path });
@@ -32,7 +32,7 @@ test.describe("기사편집 페이지", () => {
     await gotoAndCreatePostAsDraft({ page, title, userName });
     await gotoEditPostPage({ page, title });
     await page.getByText("공개여부").click();
-    await page.getByRole("button", { name: "공개" }).click();
+    await page.getByRole("button", { name: "공개하기" }).click();
     await page.getByRole("button", { name: "네" }).click();
     await page.waitForNavigation();
     await expect(page).toHaveTitle(title);
@@ -52,7 +52,7 @@ test.describe("기사편집 페이지", () => {
     const title = "기사 삭제 테스트";
     await gotoAndCreatePostAsPublish({ page, title, userName });
     await gotoEditPostPage({ page, title });
-    await page.getByRole("button", { name: "삭제" }).click();
+    await page.getByRole("button", { name: "삭제하기" }).click();
     await page.getByRole("button", { name: "네" }).click();
     await page.waitForNavigation();
     await expect(page).toHaveTitle(`${userName}님의 기사 목록`);

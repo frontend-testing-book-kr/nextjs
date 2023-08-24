@@ -33,6 +33,7 @@
   }
 
   .menu {
+    flex-direction: column;
     width: 200px;
     height: 100%;
     position: fixed;

@@ -27,7 +27,7 @@ services:
     entrypoint: >
       /bin/sh -c "
       /usr/bin/mc alias set myminio http://minio:9000 root password;
-      /usr/bin/mc mb myminio/image --region=ap-northeast-1;
+      /usr/bin/mc mb myminio/image --region=ap-northeast-2;
       /usr/bin/mc anonymous set public myminio/image;
       tail -f /dev/null;
       "

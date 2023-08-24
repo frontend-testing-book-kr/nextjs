@@ -37,7 +37,7 @@ describe("LoginUserInfo", () => {
   test("마운트시에 로그인한 사용자 정보를 취득하는 API를 호출한다", async () => {
     const { getMyProfile } = setup();
     await waitFor(() =>
-      expect(screen.getByTestId("name")).toHaveTextContent("Bae Eonsu")
+      expect(screen.getByTestId("name")).toHaveTextContent("EonsuBae")
     );
     expect(getMyProfile).toHaveBeenCalledTimes(1);
   });

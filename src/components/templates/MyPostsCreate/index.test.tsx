@@ -72,6 +72,7 @@ describe("AlertDialog", () => {
     await selectImage();
     await saveAsPublished();
     await clickButton("네");
+    // 제목 입력란이 invalid 상태가 된다
     await waitFor(() =>
       expect(
         screen.getByRole("textbox", { name: "제목" })
@@ -82,7 +83,7 @@ describe("AlertDialog", () => {
 });
 
 describe("Toast", () => {
-  test("API통신을 시작하면 '저장중입니다...'가 표시된다", async () => {
+  test("API통신을 시도하면 '저장중입니다...'가 표시된다", async () => {
     const { typeTitle, saveAsPublished, clickButton, selectImage } =
       await setup();
     await typeTitle("201");

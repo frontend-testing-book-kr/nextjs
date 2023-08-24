@@ -9,7 +9,7 @@ import { assertUnauthorizedRedirect, url } from "./util";
 
 test.describe("신규기사 페이지", () => {
   const path = "/my/posts/create";
-  const userName: UserName = "Bae Eonsu";
+  const userName: UserName = "JPub";
 
   test("로그인 상태가 아니면 로그인 화면으로 리다이렉트된다", async ({ page }) => {
     await assertUnauthorizedRedirect({ page, path });
