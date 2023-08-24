@@ -1,6 +1,6 @@
 name: Test UI
 
-on: push
+on: [push, workflow_dispatch]
 env:
   REG_NOTIFY_CLIENT_ID: ${{ secrets.REG_NOTIFY_CLIENT_ID }}
   AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
