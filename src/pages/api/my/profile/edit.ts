@@ -15,13 +15,13 @@ const handlePut = withLogin<UpdateMyProfileEditReturn>(async (req, res) => {
   // 입력값이 유효한지 유효성 검사를 실시한다
   // 유효성 검사에 에러가 발생하면 withLogin 함수에 내장된 에러 핸들러에서 처리한다
   validate(req.body, updateMyProfileEditInputSchema);
-  // Prisma Client를 래핑한 함수를 통해 데이터베이스에서 데이터를 취득한다
+  // Prisma Client를 래핑한 함수를 통해 데이터베이스의 데이터를 갱신한다
   // 에러가 발생하면 withLogin 함수에 내장된 에러 핸들러에서 처리한다
   const user = await updateMyProfileEdit({
     id: req.user.id,
     input: req.body,
   });
-  // 세션에 저장된 사용자 정보 갱신
+  // 세션에 저장된 사용자 정보를 갱신한다
   const session = await getSession(req, res);
   session.user = { ...session.user, name: user.name, imageUrl: user.imageUrl };
   res.status(200).json(user);

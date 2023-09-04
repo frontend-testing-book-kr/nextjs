@@ -20,10 +20,10 @@ test("showToast를 호출하면 Toast컴포넌트가 표시된다", async () => 
       <TestComponent message={message} />
     </ToastProvider>
   );
-  // 처음에는 표시되지 않는다
+  // 처음에는 렌더링되지 않는다
   expect(screen.queryByRole("alert")).not.toBeInTheDocument();
   await user.click(screen.getByRole("button"));
-  // 표시되었는지 확인한다
+  // 렌더링되었는지 확인한다
   expect(screen.getByRole("alert")).toHaveTextContent(message);
 });
 

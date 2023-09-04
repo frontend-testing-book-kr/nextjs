@@ -47,7 +47,7 @@ test("이미지 업로드에 실패하면 경고창이 표시된다", async () =
   // 이미지를 선택한다
   const { selectImage } = selectImageFile();
   await selectImage();
-  // 지정한 문자열이 포함된 Toast가 표시되는지 검증한다
+  // 지정한 문자열이 포함된 Toast가 나타나는지 검증한다
   await waitFor(() =>
     expect(screen.getByRole("alert")).toHaveTextContent(
       "이미지 업로드에 실패했습니다"

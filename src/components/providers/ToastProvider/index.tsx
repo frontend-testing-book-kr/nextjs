@@ -14,7 +14,7 @@ export type { ToastState, ToastStyle };
 const { showToast } = useToastAction();
 const onSubmit = handleSubmit(async () => {
   try {
-    // ...Web API로 값을 제출한다
+    // ...Web API에 값을 제출한다
     showToast({ message: "저장되었습니다", style: "succeed" });
   } catch (err) {
     showToast({ message: "에러가 발생했습니다", style: "failed" });
