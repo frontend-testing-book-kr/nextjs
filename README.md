@@ -36,7 +36,7 @@ $ npm run storybook:ci
 
 reg-suit을 사용한 실무적인 VRT 사용법을 다룹니다. 이 저장소에도 VRT가 있지만 주된 내용은 보다 간결하게 작성한 아래의 저장소에서 설명합니다.
 
-【예제 코드】https://github.com/frontend-testing-book/vrt
+【예제 코드】https://github.com/1mlzesb/frontend-vrt
 
 ## 10장 E2E 테스트
 
