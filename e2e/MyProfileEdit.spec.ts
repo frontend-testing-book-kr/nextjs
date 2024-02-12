@@ -23,7 +23,7 @@ test.describe("프로필 편집 페이지", () => {
     await page.getByRole("textbox", { name: "사용자명" }).fill(newName);
     await page.getByRole("button", { name: "프로필 변경하기" }).click();
     await page.waitForURL(url("/my/posts"));
-    // 페이지 제목에 방금 입력한 이름이 포함되어 있다
+    // 페이지 제목에 방금 입력한 이름이 포함돼 있다.
     await expect(page).toHaveTitle(`${newName}님의 기사 목록`);
     await expect(
       page.getByRole("region", { name: "프로필" })

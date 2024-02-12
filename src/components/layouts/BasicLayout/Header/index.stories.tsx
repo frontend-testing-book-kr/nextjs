@@ -5,7 +5,7 @@ import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 import { userEvent as user, waitFor, within } from "@storybook/testing-library";
 import { Header } from "./";
 
-/* 리스트 8-15
+/* 코드 8-15
 export const NotLoggedIn: Story = {
   parameters: {
     msw: { 
@@ -19,11 +19,11 @@ export const NotLoggedIn: Story = {
 };
 */
 
-/* 리스트 8-16
+/* 코드 8-16
 export const NotLoggedIn: Story = {
   parameters: {
     msw: { handlers: [handleGetMyProfile({ status: 401 })] },
-    // 요청 핸들러 내용은 다음과 같다
+    // 요청 핸들러 내용은 다음과 같다.
     // msw: { 
     //   handlers: [
     //     rest.get("/api/my/profile", async (_, res, ctx) => {
@@ -76,14 +76,14 @@ export const SPLoggedIn: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const navigation = canvas.queryByRole("navigation", {
-      name: "네비게이션",
+      name: "내비게이션",
     });
     await expect(navigation).not.toBeInTheDocument();
   },
 };
 
 export const SPLoggedInOpenedMenu: Story = {
-  storyName: "SP레이아웃에서 드로어 메뉴를 연다",
+  storyName: "SP 레이아웃에서 드로어 메뉴를 연다",
   parameters: {
     ...SPStory.parameters,
     screenshot: {
@@ -98,14 +98,14 @@ export const SPLoggedInOpenedMenu: Story = {
     });
     await user.click(button);
     const navigation = canvas.getByRole("navigation", {
-      name: "네비게이션",
+      name: "내비게이션",
     });
     await expect(navigation).toBeInTheDocument();
   },
 };
 
 export const SPLoggedInClosedMenu: Story = {
-  storyName: "SP레이아웃에서 드로어 메뉴를 닫는다",
+  storyName: "SP 레이아웃에서 드로어 메뉴를 닫는다",
   parameters: {
     ...SPStory.parameters,
     screenshot: {
@@ -128,7 +128,7 @@ export const SPLoggedInClosedMenu: Story = {
 };
 
 export const PCLoggedInNotHaveOpenMenu: Story = {
-  storyName: "PC레이아웃에서는 '메뉴 열기'를 표시하지 않는다",
+  storyName: "PC 레이아웃에서는 '메뉴 열기'를 표시하지 않는다",
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await waitFor(() =>

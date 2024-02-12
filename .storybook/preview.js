@@ -4,7 +4,7 @@ import { initialize, mswDecorator } from "msw-storybook-addon";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 import { withScreenshot } from "storycap";
 
-/* 리스트 8-14
+/* 코드 8-14
 export const parameters = {
   // 기타 설정 생략
   msw: {
@@ -15,7 +15,7 @@ export const parameters = {
           ctx.json({
             id: 1,
             name: "EonsuBae",
-            bio: "프런트엔드 엔지니어. TypeScript와 UI 컴포넌트 테스트에 관심이 있습니다.",
+            bio: "프런트엔드 엔지니어. 타입스크립트와 UI 컴포넌트 테스트에 관심이 있습니다.",
             twitterAccount: "eonsu-bae",
             githubAccount: "eonsu-bae",
             imageUrl: "/__mocks__/images/img01.jpg",

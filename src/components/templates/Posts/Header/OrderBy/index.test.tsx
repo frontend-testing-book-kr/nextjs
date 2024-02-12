@@ -12,9 +12,9 @@ function setup(asPath = "/posts") {
   return { combobox };
 }
 
-test("초기화면에서 query.orderBy가 지정되어 있지 않으면 '수정일자순'이 선택되어 있다", async () => {
+test("초기화면에서 query.orderBy가 지정되어 있지 않으면 '수정일순'이 선택되어 있다", async () => {
   const { combobox } = setup();
-  expect(combobox).toHaveDisplayValue("수정일자순");
+  expect(combobox).toHaveDisplayValue("수정일순");
 });
 
 test("지정되어 있으면 query.orderBy가 설정된다", async () => {

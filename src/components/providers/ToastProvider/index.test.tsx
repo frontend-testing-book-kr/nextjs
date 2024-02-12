@@ -20,10 +20,10 @@ test("showToast를 호출하면 Toast컴포넌트가 표시된다", async () => 
       <TestComponent message={message} />
     </ToastProvider>
   );
-  // 처음에는 렌더링되지 않는다
+  // 처음에는 렌더링되지 않는다.
   expect(screen.queryByRole("alert")).not.toBeInTheDocument();
   await user.click(screen.getByRole("button"));
-  // 렌더링되었는지 확인한다
+  // 렌더링됐는지 확인한다.
   expect(screen.getByRole("alert")).toHaveTextContent(message);
 });
 
@@ -52,7 +52,7 @@ test("Failed", () => {
 test.each([
   { isShown: true, message: "성공했습니다", style: "succeed" },
   { isShown: true, message: "실패했습니다", style: "failed" },
-  { isShown: true, message: "통신중입니다", style: "busy" },
+  { isShown: true, message: "통신 중입니다", style: "busy" },
 ] as ToastState[])("$message", (state) => {
   render(<ToastProvider defaultState={state}>{null}</ToastProvider>);
   expect(screen.getByRole("alert")).toHaveTextContent(state.message);

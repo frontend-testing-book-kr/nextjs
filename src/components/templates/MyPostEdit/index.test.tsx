@@ -20,7 +20,7 @@ async function setup() {
     await screen.findByRole("alertdialog");
   }
   async function saveAsDraft() {
-    await user.click(screen.getByRole("switch", { name: "공개여부" }));
+    await user.click(screen.getByRole("switch", { name: "공개 여부" }));
     await user.click(screen.getByRole("button", { name: "비공개 상태로 저장" }));
   }
   async function deletePost() {
@@ -44,14 +44,14 @@ beforeEach(() => {
 });
 
 describe("AlertDialog", () => {
-  test("'아니오'를 클릭하면 AlertDialog가 사라진다", async () => {
+  test("[아니오] 버튼을 클릭하면 AlertDialog가 사라진다", async () => {
     const { saveAsPublished, clickButton } = await setup();
     await saveAsPublished();
     await clickButton("아니오");
     expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
   });
 
-  test("유효하지 않은 내용을 포함한채로 제출하면 AlertDialog가 사라진다", async () => {
+  test("유효하지 않은 내용을 포함해 제출하면 AlertDialog가 사라진다", async () => {
     const { clearTitle, saveAsPublished, clickButton } = await setup();
     await clearTitle();
     await saveAsPublished();
@@ -63,12 +63,12 @@ describe("AlertDialog", () => {
 });
 
 describe("Toast", () => {
-  test("공개에 성공하면 '공개되었습니다'가 표시된다", async () => {
+  test("공개에 성공하면 '공개됐습니다'가 표시된다", async () => {
     const { saveAsPublished, clickButton } = await setup();
     await saveAsPublished();
     await clickButton("네");
     await waitFor(() =>
-      expect(screen.getByRole("alert")).toHaveTextContent("공개되었습니다")
+      expect(screen.getByRole("alert")).toHaveTextContent("공개됐습니다")
     );
   });
 
@@ -82,12 +82,12 @@ describe("Toast", () => {
     );
   });
 
-  test("삭제에 성공하면 '삭제되었습니다'가 표시된다", async () => {
+  test("삭제에 성공하면 '삭제됐습니다'가 표시된다", async () => {
     const { deletePost, clickButton } = await setup();
     await deletePost();
     await clickButton("네");
     await waitFor(() =>
-      expect(screen.getByRole("alert")).toHaveTextContent("삭제되었습니다")
+      expect(screen.getByRole("alert")).toHaveTextContent("삭제됐습니다")
     );
   });
 

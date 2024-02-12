@@ -22,7 +22,7 @@ test.describe("메인 페이지", () => {
     await expect(loginUser).toContainText("JPub");
   });
 
-  test("신규기사를 공개 상태로 저장하면 최신 기사 목록에 표시된다", async ({
+  test("신규 기사를 공개 상태로 저장하면 최신 기사 목록에 표시된다", async ({
     page,
   }) => {
     const title = "공개 저장 후 최신 기사 목록 테스트";
@@ -37,7 +37,7 @@ test.describe("메인 페이지", () => {
     const title = "비공개 후 최신 기사 목록 테스트";
     await gotoAndCreatePostAsPublish({ page, title, userName });
     await gotoEditPostPage({ page, title });
-    await page.getByText("공개여부").click();
+    await page.getByText("공개 여부").click();
     await page.getByRole("button", { name: "비공개 상태로 저장" }).click();
     await page.waitForNavigation();
     await expect(page).toHaveTitle(title);

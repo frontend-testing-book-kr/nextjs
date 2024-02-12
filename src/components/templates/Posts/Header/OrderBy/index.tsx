@@ -16,7 +16,7 @@ export const OrderBy = () => {
         },
       }}
       options={[
-        { value: "updatedAt", label: "수정일자순" },
+        { value: "updatedAt", label: "수정일순" },
         { value: "starCount", label: "인기순" },
       ]}
     />

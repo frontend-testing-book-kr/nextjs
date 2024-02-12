@@ -27,7 +27,7 @@ test("Failed", () => {
 test("Busy", () => {
   const state: ToastState = {
     isShown: true,
-    message: "통신중입니다",
+    message: "통신 중입니다",
     style: "busy",
   };
   render(<ToastProvider defaultState={state}>{null}</ToastProvider>);

@@ -8,7 +8,7 @@ import {
 } from "./postUtil";
 import { assertUnauthorizedRedirect, url } from "./util";
 
-test.describe("기사편집 페이지", () => {
+test.describe("기사 편집 페이지", () => {
   const path = "/my/posts/1/edit";
   const userName: UserName = "JPub";
 
@@ -31,7 +31,7 @@ test.describe("기사편집 페이지", () => {
     const title = "비공개 기사 공개 테스트";
     await gotoAndCreatePostAsDraft({ page, title, userName });
     await gotoEditPostPage({ page, title });
-    await page.getByText("공개여부").click();
+    await page.getByText("공개 여부").click();
     await page.getByRole("button", { name: "공개하기" }).click();
     await page.getByRole("button", { name: "네" }).click();
     await page.waitForNavigation();
@@ -42,7 +42,7 @@ test.describe("기사편집 페이지", () => {
     const title = "기사 비공개 테스트";
     await gotoAndCreatePostAsPublish({ page, title, userName });
     await gotoEditPostPage({ page, title });
-    await page.getByText("공개여부").click();
+    await page.getByText("공개 여부").click();
     await page.getByRole("button", { name: "비공개 상태로 저장" }).click();
     await page.waitForNavigation();
     await expect(page).toHaveTitle(title);

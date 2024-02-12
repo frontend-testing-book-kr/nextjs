@@ -28,7 +28,7 @@ export function useMyPostEdit({ id }: { id: number }) {
       showToast({ message: "저장중입니다...", style: "busy" });
       await updateMyPost({ id, input });
       await router.push(`/my/posts/${id}`);
-      showToast({ message: `${status}되었습니다`, style: "succeed" });
+      showToast({ message: `${status}됐습니다`, style: "succeed" });
     } catch (err) {
       showToast({ message: `${status}에 실패했습니다`, style: "failed" });
     }
@@ -39,7 +39,7 @@ export function useMyPostEdit({ id }: { id: number }) {
       showToast({ message: "삭제중...", style: "busy" });
       await deleteMyPost({ id });
       await router.push(`/my/posts`);
-      showToast({ message: "삭제되었습니다", style: "succeed" });
+      showToast({ message: "삭제됐습니다", style: "succeed" });
     } catch (err) {
       showToast({ message: "삭제에 실패했습니다", style: "failed" });
     }

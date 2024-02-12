@@ -28,7 +28,7 @@ const setup = (isSubmitting = false) => {
     />
   );
   const clickSwitch = () =>
-    user.click(getByRole("switch", { name: "공개여부" }));
+    user.click(getByRole("switch", { name: "공개 여부" }));
   const clickSaveButton = () =>
     user.click(
       queryByRole("button", { name: "공개하기" }) ||
@@ -69,7 +69,7 @@ test("'삭제하기'버튼을 클릭하면 이벤트 핸들러가 실행된다",
 
 test("제출중에는 모든 컨트롤러가 비활성화된다", async () => {
   const { getByRole } = setup(true);
-  expect(getByRole("switch", { name: "공개여부" })).toBeDisabled();
+  expect(getByRole("switch", { name: "공개 여부" })).toBeDisabled();
   expect(getByRole("button", { name: "삭제하기" })).toBeDisabled();
   expect(getByRole("button", { name: "비공개 상태로 저장" })).toBeDisabled();
 });

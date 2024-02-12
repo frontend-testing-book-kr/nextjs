@@ -5,11 +5,11 @@ import { Header } from "./";
 
 const user = userEvent.setup();
 
-/* 리스트 7-13
+/* 코드 7-13
 function setup(url = "/my/posts?page=1") {
   mockRouter.setCurrentUrl(url);
   render(<Header />);
-  const combobox = screen.getByRole("combobox", { name: "공개여부" });
+  const combobox = screen.getByRole("combobox", { name: "공개 여부" });
   return { combobox };
 }
 */
@@ -17,7 +17,7 @@ function setup(url = "/my/posts?page=1") {
 function setup(url = "/my/posts?page=1") {
   mockRouter.setCurrentUrl(url);
   render(<Header />);
-  const combobox = screen.getByRole("combobox", { name: "공개여부" });
+  const combobox = screen.getByRole("combobox", { name: "공개 여부" });
   async function selectOption(label: string) {
     await user.selectOptions(combobox, label);
   }
@@ -39,14 +39,16 @@ test("staus?=private으로 접속하면 '비공개'가 선택되어 있다", asy
   expect(combobox).toHaveDisplayValue("비공개");
 });
 
-test("공개여부를 변경하면 status가 변한다", async () => {
-  // 기존의 page=1이 그대로 있는지도 함께 검증한다
+test("공개 여부를 변경하면 status가 변한다", async () => {
   const { selectOption } = setup();
   expect(mockRouter).toMatchObject({ query: { page: "1" } });
+  // '공개'를 선택하면 ?status=public이 된다.
   await selectOption("공개");
+  // 기존의 page=1이 그대로 있는지도 함께 검증한다.
   expect(mockRouter).toMatchObject({
     query: { page: "1", status: "public" },
   });
+  // '비공개'를 선택하면 ?status=private이 된다.
   await selectOption("비공개");
   expect(mockRouter).toMatchObject({
     query: { page: "1", status: "private" },

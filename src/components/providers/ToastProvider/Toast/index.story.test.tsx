@@ -16,5 +16,5 @@ test("Failed", () => {
 
 test("Busy", () => {
   render(<Busy />);
-  expect(screen.getByRole("alert")).toHaveTextContent("통신중입니다");
+  expect(screen.getByRole("alert")).toHaveTextContent("통신 중입니다");
 });

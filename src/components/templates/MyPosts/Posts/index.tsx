@@ -8,7 +8,7 @@ import styles from "./styles.module.css";
 
 const PostList = ({ posts }: { posts: GetMyPostsReturn["posts"] }) => {
   return (
-    <section aria-label="기사목록">
+    <section aria-label="기사 목록">
       <ul className={styles.list}>
         {posts.map((post) => (
           <PostItem key={post.id} post={post} />

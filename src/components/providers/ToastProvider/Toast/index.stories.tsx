@@ -27,5 +27,5 @@ export const Failed: Story = {
 };
 
 export const Busy: Story = {
-  decorators: [createDecorator({ message: "통신중입니다", style: "busy" })],
+  decorators: [createDecorator({ message: "통신 중입니다", style: "busy" })],
 };

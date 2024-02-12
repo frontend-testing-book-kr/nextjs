@@ -5,7 +5,7 @@ import { SelectFilterOption } from "./";
 const user = userEvent.setup();
 
 function setup() {
-  const title = "공개여부";
+  const title = "공개 여부";
   const options = [
     { value: "all", label: "모두" },
     { value: "public", label: "공개" },

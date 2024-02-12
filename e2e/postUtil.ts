@@ -47,7 +47,7 @@ export async function gotoAndCreatePostAsPublish({
   userName: UserName;
 }) {
   await gotoAndFillPostContents({ page, title, userName });
-  await page.getByText("공개여부").click();
+  await page.getByText("공개 여부").click();
   await page.getByRole("button", { name: "공개하기" }).click();
   await page.getByRole("button", { name: "네" }).click();
   await page.waitForNavigation();
@@ -63,5 +63,5 @@ export async function gotoEditPostPage({
 }) {
   await page.getByRole("link", { name: "편집하기" }).click();
   await page.waitForNavigation();
-  await expect(page).toHaveTitle(`기사편집 | ${title}`);
+  await expect(page).toHaveTitle(`기사 편집 | ${title}`);
 }

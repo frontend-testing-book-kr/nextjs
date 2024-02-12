@@ -27,7 +27,7 @@ function setup() {
     await user.type(textbox, title);
   }
   async function saveAsPublished() {
-    await user.click(screen.getByRole("switch", { name: "공개여부" }));
+    await user.click(screen.getByRole("switch", { name: "공개 여부" }));
     await user.click(screen.getByRole("button", { name: "공개하기" }));
   }
   async function saveAsDraft() {
@@ -50,17 +50,17 @@ function setup() {
 
 setupMockServer(handleGetMyProfile());
 
-test("유효하지 않은 내용을 포함한채로 제출하면 유효성 검사 에러가 표시된다", async () => {
+test("유효하지 않은 내용을 포함해 제출하면 유효성 검사 에러가 표시된다", async () => {
   const { saveAsDraft } = setup();
   await saveAsDraft();
   await waitFor(() =>
     expect(
       screen.getByRole("textbox", { name: "제목" })
-    ).toHaveErrorMessage("1개 이상의 문자를 입력해주세요")
+    ).toHaveErrorMessage("한 글자 이상의 문자를 입력해주세요")
   );
 });
 
-test("유효하지 않은 내용을 포함한채로 제출하면 onInvalid라는 이벤트 핸들러가 실행된다", async () => {
+test("유효하지 않은 내용을 포함해 제출하면 onInvalid라는 이벤트 핸들러가 실행된다", async () => {
   const { saveAsDraft, onClickSave, onValid, onInvalid } = setup();
   await saveAsDraft();
   expect(onClickSave).toHaveBeenCalled();

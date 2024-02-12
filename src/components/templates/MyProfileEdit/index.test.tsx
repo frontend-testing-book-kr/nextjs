@@ -47,11 +47,11 @@ test("통신에 성공하면 화면을 이동한다", async () => {
   );
 });
 
-test("통신에 성공하면 '저장되었습니다'가 표시된다", async () => {
+test("통신에 성공하면 '저장됐습니다'가 표시된다", async () => {
   const { clickButton } = await setupValidInputs();
   await clickButton();
   await waitFor(() =>
-    expect(screen.getByRole("alert")).toHaveTextContent("저장되었습니다")
+    expect(screen.getByRole("alert")).toHaveTextContent("저장됐습니다")
   );
 });
 

@@ -15,7 +15,7 @@ const Page: NextPageWithGsspResult<Props> = ({ data, err }) => {
   return err ? <Error {...err} /> : <MyPostEdit {...data} />;
 };
 Page.getLayout = BasicLayout;
-Page.getPageTitle = PageTitle(({ data }) => `기사편집 | ${data?.post.title}`);
+Page.getPageTitle = PageTitle(({ data }) => `기사 편집 | ${data?.post.title}`);
 
 export const getServerSideProps = withLogin<Props>(async ({ query, user }) => {
   const postId = parseAsPositiveInt(query.postId) || 0;

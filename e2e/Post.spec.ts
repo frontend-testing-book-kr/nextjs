@@ -19,12 +19,12 @@ test.describe("글쓰기 페이지", () => {
     await page.goto(url("/posts/10"));
     const buttonLike = page.getByRole("button", { name: "Like" });
     const buttonText = page.getByTestId("likeStatus");
-    // Like 버튼이 활성화되고, 현재 Like된 횟수는 0이다
+    // [Like] 버튼이 활성화되고, 현재 Like 수는 0이다.
     await expect(buttonLike).toBeEnabled();
     await expect(buttonLike).toHaveText("0");
     await expect(buttonText).toHaveText("Like");
     await buttonLike.click();
-    // Like를 클릭하면 카운트가 1 증가하고 이미 Like한 상태가 된다
+    // [Like]를 클릭하면 카운트가 1 증가하고, 이미 [Like] 버튼을 누른 상태가 된다.
     await expect(buttonLike).toHaveText("1");
     await expect(buttonText).toHaveText("Liked");
   });
@@ -37,7 +37,7 @@ test.describe("글쓰기 페이지", () => {
     await page.goto(url("/posts/90"));
     const buttonLike = page.getByRole("button", { name: "Like" });
     const buttonText = page.getByTestId("likeStatus");
-    // Like 버튼이 비활성화되고 Like라는 문자도 사라진다
+    // [Like] 버튼이 비활성화되고, Like라는 문자도 사라진다.
     await expect(buttonLike).toBeDisabled();
     await expect(buttonText).not.toHaveText("Like");
   });

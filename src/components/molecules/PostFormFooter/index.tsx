@@ -50,7 +50,7 @@ export const PostFormFooter = ({
           <SaveButton name={name} control={control} onClickSave={onClickSave} />
         </div>
         <div className={styles.status}>
-          <label htmlFor={name}>공개여부</label>
+          <label htmlFor={name}>공개 여부</label>
           <Switch {...register(name)} id={name} />
         </div>
         {onClickDelete && (

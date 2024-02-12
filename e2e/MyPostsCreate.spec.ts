@@ -7,7 +7,7 @@ import {
 } from "./postUtil";
 import { assertUnauthorizedRedirect, url } from "./util";
 
-test.describe("신규기사 페이지", () => {
+test.describe("신규 기사 페이지", () => {
   const path = "/my/posts/create";
   const userName: UserName = "JPub";
 
@@ -15,12 +15,12 @@ test.describe("신규기사 페이지", () => {
     await assertUnauthorizedRedirect({ page, path });
   });
 
-  test("신규기사를 비공개 상태로 저장할 수 있다", async ({ page }) => {
+  test("신규 기사를 비공개 상태로 저장할 수 있다", async ({ page }) => {
     const title = "비공개 상태로 저장하기 테스트";
     await gotoAndCreatePostAsDraft({ page, title, userName });
   });
 
-  test("신규기사를 공개할 수 있다", async ({ page }) => {
+  test("신규 기사를 공개할 수 있다", async ({ page }) => {
     const title = "공개하기 테스트";
     await gotoAndCreatePostAsPublish({ page, title, userName });
   });

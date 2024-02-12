@@ -1,13 +1,13 @@
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 import { Switch } from "./";
 
-/* 리스트 8-26
+/* 코드 8-26
 export default {
   component: Switch,
 } as ComponentMeta<typeof Switch>;
 */
 
-/* 리스트 8-28
+/* 코드 8-28
 export default {
   component: Switch,
   parameters: {

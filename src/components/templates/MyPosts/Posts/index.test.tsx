@@ -8,7 +8,7 @@ import { Posts } from "./";
 const setup = (empty = false) => {
   render(<Posts {...(empty ? getMyPostsEmptyData : getMyPostsData)} />);
   const PostList = screen.queryByRole("region", {
-    name: "기사목록",
+    name: "기사 목록",
   });
   const pagination = screen.queryByRole("navigation", {
     name: "페이지네이션",
@@ -22,14 +22,14 @@ const setup = (empty = false) => {
   return { PostList, pagination, paginationInfo, noItems };
 };
 
-test("'기사목록'이라는 접근 가능한 이름을 식별할 수 있다", async () => {
+test("'기사 목록'이라는 접근 가능한 이름을 식별할 수 있다", async () => {
   setup();
   expect(
-    screen.getByRole("region", { name: "기사목록" })
+    screen.getByRole("region", { name: "기사 목록" })
   ).toBeInTheDocument();
 });
 
-test("기사목록이 있으면 컨텐츠가 표시된다", async () => {
+test("기사 목록이 있으면 컨텐츠가 표시된다", async () => {
   const { PostList, pagination, paginationInfo, noItems } = setup();
   expect(PostList).toBeInTheDocument();
   expect(pagination).toBeInTheDocument();
@@ -37,7 +37,7 @@ test("기사목록이 있으면 컨텐츠가 표시된다", async () => {
   expect(noItems).not.toBeInTheDocument();
 });
 
-test("기사목록이 없으면 게재된 기사가 없다는 안내가 표시된다", async () => {
+test("기사 목록이 없으면 게재된 기사가 없다는 안내가 표시된다", async () => {
   const { PostList, pagination, paginationInfo, noItems } = setup(true);
   expect(PostList).not.toBeInTheDocument();
   expect(pagination).not.toBeInTheDocument();

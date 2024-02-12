@@ -16,14 +16,14 @@ export function selectImageFile(
   fileName = "hello.png",
   content = "hello"
 ) {
-  // userEvent를 초기화한다
+  // userEvent를 초기화한다.
   const user = userEvent.setup();
-  // 더미 이미지 파일을 작성한다
+  // 더미 이미지 파일을 작성한다.
   const filePath = [`C:\\fakepath\\${fileName}`];
   const file = new File([content], fileName, { type: "image/png" });
-  // render한 컴포넌트에서 data-testid="file"인 input을 취득한다
+  // render한 컴포넌트에서 data-testid="file"인 input을 취득한다.
   const fileInput = screen.getByTestId(inputTestId);
-  // 이 함수를 실행하면 이미지 선택이 재현된다
+  // 이 함수를 실행하면 이미지 선택이 재현된다.
   const selectImage = () => user.upload(fileInput, file);
   return { fileInput, filePath, selectImage };
 }

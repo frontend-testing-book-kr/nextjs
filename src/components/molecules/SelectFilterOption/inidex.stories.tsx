@@ -9,7 +9,7 @@ type Story = ComponentStoryObj<typeof SelectFilterOption>;
 
 export const Default: Story = {
   args: {
-    title: "공개여부",
+    title: "공개 여부",
     options: [
       { value: "all", label: "모두" },
       { value: "public", label: "공개" },

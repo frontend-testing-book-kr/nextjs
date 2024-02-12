@@ -14,9 +14,9 @@ export const Header = () => {
   const defaultValue = parseAsNonEmptyString(query.status) || "all";
   return (
     <header className={styles.header}>
-      <h2 className={styles.heading}>기사목록</h2>
+      <h2 className={styles.heading}>기사 목록</h2>
       <SelectFilterOption
-        title="공개여부"
+        title="공개 여부"
         options={options}
         selectProps={{
           defaultValue,

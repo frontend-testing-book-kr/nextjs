@@ -24,10 +24,10 @@ test("TextboxWithInfo", async () => {
   };
   render(<TextboxWithInfo {...args} />);
   const textbox = screen.getByRole("textbox");
-  // label의 htmlFor와 연관되어 있다
+  // label의 htmlFor와 연관돼 있다.
   expect(textbox).toHaveAccessibleName(args.title);
-  // aria-describedby와 연관되어 있다
+  // aria-describedby와 연관돼 있다.
   expect(textbox).toHaveAccessibleDescription(args.description);
-  // aria-errormessage와 연관되어 있다
+  // aria-errormessage와 연관돼 있다.
   expect(textbox).toHaveErrorMessage(args.error);
 });

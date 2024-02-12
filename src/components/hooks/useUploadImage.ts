@@ -47,14 +47,14 @@ export function useUploadImage<T extends FieldValues>({
     register(name);
   }, [register, name]);
 
-  // handleChangeFile 함수는 FileReader 객체를 사용해서 이미지 파일을 취득한다
+  // handleChangeFile 함수는 FileReader 객체를 사용해서 이미지 파일을 취득한다.
   const onChangeImage = handleChangeFile((_, file) => {
-    // 취득한 이미지의 내용을 file에 저장한다
-    // uploadImage 함수는 API Route로 구현된 이미지 업로드 API를 호출한다 
+    // 취득한 이미지의 내용을 file에 저장한다.
+    // uploadImage 함수는 API Route로 구현된 이미지 업로드 API를 호출한다.
     uploadImage({ file })
       .then((data) => {
         const imgPath = `${data.url}/${data.filename}` as PathValue<T, Path<T>>;
-        // API 응답에 포함되어 있는 이미지 URL을 경로로 지정한다
+        // API 응답에 포함된 이미지 URL을 경로로 지정한다.
         setImageUrl(imgPath);
         setValue(name, imgPath);
         onResolved?.(data);

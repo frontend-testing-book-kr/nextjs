@@ -14,6 +14,6 @@ test("주요 컨텐츠가 표시되어 있다", async () => {
     await screen.findByRole("region", { name: "프로필" })
   ).toBeInTheDocument();
   expect(
-    screen.getByRole("region", { name: "기사목록" })
+    screen.getByRole("region", { name: "기사 목록" })
   ).toBeInTheDocument();
 });

@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import mockRouter from "next-router-mock";
 import { Nav } from "./";
 
-/* 리스트 7-9
+/* 코드 7-9
 test("현재 위치는 'My Posts'이다", () => {
   mockRouter.setCurrentUrl("/my/posts");
 });
@@ -26,7 +26,7 @@ test.each([
   { url: "/my/posts", name: "My Posts" },
   { url: "/my/posts/123", name: "My Posts" },
   { url: "/my/posts/create", name: "Create Post" },
-])("$url의 현재위치는 $name이다", ({ url, name }) => {
+])("$url의 현재 위치는 $name이다", ({ url, name }) => {
   mockRouter.setCurrentUrl(url);
   render(<Nav onCloseMenu={() => {}} />);
   const link = screen.getByRole("link", { name });

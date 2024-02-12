@@ -15,14 +15,14 @@ const setup = (published = true) => {
 };
 
 test("링크의 접근 가능한 이름에는 제목을 사용한다", async () => {
-  // <a>요소에 aria-label을 설정하지 않으면 <a>가 가진 문자열이 접근 가능한 이름이 된다
-  // aria-label에 post.title을 적용해서 직관적으로 이해할 수 있는 접근 가능한 이름이 되었다
+  // <a>요소에 aria-label을 설정하지 않으면 <a>가 가진 문자열이 접근 가능한 이름이 된다.
+  // aria-label에 post.title을 적용해서 직관적으로 이해할 수 있는 접근 가능한 이름이 됐다.
   const { post, link } = setup();
   expect(link).toHaveAccessibleName(post.title);
 });
 
 test("링크를 클릭하면 화면이 이동된다", async () => {
-  // 링크 이동 확인은 목록에 표시된 내용을 검증하기 보다 가장 작은 컴포넌트로 검증하는 것이 보다 빠른 방법이다
+  // 링크 이동 확인은 목록에 표시된 내용을 검증하기 보다 가장 작은 컴포넌트로 검증하는 것이 보다 빠른 방법이다.
   const { post, click } = setup();
   await click();
   expect(mockRouter).toMatchObject({ pathname: `/my/posts/${post.id}` });

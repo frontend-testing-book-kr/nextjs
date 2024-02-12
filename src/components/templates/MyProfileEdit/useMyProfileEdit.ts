@@ -24,7 +24,7 @@ export function useMyProfileEdit({ profile }: Props) {
       showToast({ message: "저장중입니다...", style: "busy" });
       await updateMyProfileEdit({ input });
       await router.push("/my/posts");
-      showToast({ message: "저장되었습니다", style: "succeed" });
+      showToast({ message: "저장됐습니다", style: "succeed" });
       updateProfile();
     } catch (err) {
       showToast({ message: "저장에 실패했습니다", style: "failed" });

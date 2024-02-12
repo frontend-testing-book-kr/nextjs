@@ -12,8 +12,8 @@ export default {
     nextRouter: { pathname: "/my/posts/create" },
   },
   args: {
-    title: "신규기사",
-    description: "공개여부가 변경될 때까지 기사는 공개되지 않는다",
+    title: "신규 기사",
+    description: "공개 여부가 변경될 때까지 기사는 공개되지 않는다",
     onClickSave: () => {},
   },
 } as ComponentMeta<typeof PostForm>;
@@ -38,7 +38,7 @@ export const FailedSaveAsDraft: Story = {
     await user.click(canvas.getByRole("button", { name: "비공개 상태로 저장" }));
     const textbox = canvas.getByRole("textbox", { name: "제목" });
     await waitFor(() =>
-      expect(textbox).toHaveErrorMessage("1개 이상의 문자를 입력해주세요")
+      expect(textbox).toHaveErrorMessage("한 글자 이상의 문자를 입력해주세요")
     );
   },
 };
@@ -50,7 +50,7 @@ export const SavePublish: Story = {
       canvas.getByRole("textbox", { name: "제목" }),
       "나의 기사"
     );
-    await user.click(canvas.getByRole("switch", { name: "공개여부" }));
+    await user.click(canvas.getByRole("switch", { name: "공개 여부" }));
     await expect(
       canvas.getByRole("button", { name: "공개하기" })
     ).toBeInTheDocument();

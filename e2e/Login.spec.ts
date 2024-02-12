@@ -15,7 +15,7 @@ test.describe("로그인 페이지", () => {
     await expect(buttonLogin).toBeVisible();
   });
 
-  test("로그인 성공시 리다이렉트 이전 페이지로 돌아간다", async ({ page }) => {
+  test("로그인 성공 시 리다이렉트 이전 페이지로 돌아간다", async ({ page }) => {
     await page.goto(url("/my/posts"));
     await expect(page).toHaveURL(url(path));
     await login({ page });

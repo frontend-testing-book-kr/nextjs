@@ -5,13 +5,13 @@ import { Posts } from "./";
 test("제목 표시", async () => {
   render(<Posts {...getPostsData} />);
   expect(
-    screen.getByRole("heading", { name: "최신기사목록" })
+    screen.getByRole("heading", { name: "최신 기사 목록" })
   ).toBeInTheDocument();
 });
 
 test("주요 컨텐츠 표시", async () => {
   render(<Posts {...getPostsData} />);
-  expect(screen.getByRole("region", { name: "기사목록" })).toBeInTheDocument();
+  expect(screen.getByRole("region", { name: "기사 목록" })).toBeInTheDocument();
   expect(
     screen.getByRole("navigation", { name: "페이지네이션" })
   ).toBeInTheDocument();

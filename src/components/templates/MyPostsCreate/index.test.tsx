@@ -19,7 +19,7 @@ async function setup() {
     await user.type(textbox, title);
   }
   async function saveAsPublished() {
-    await user.click(screen.getByRole("switch", { name: "공개여부" }));
+    await user.click(screen.getByRole("switch", { name: "공개 여부" }));
     await user.click(screen.getByRole("button", { name: "공개하기" }));
     await screen.findByRole("alertdialog");
   }
@@ -56,7 +56,7 @@ describe("AlertDialog", () => {
     ).toBeInTheDocument();
   });
 
-  test("'아니오'를 누르면 AlertDialog가 사라진다", async () => {
+  test("[아니오] 버튼을 누르면 AlertDialog가 사라진다", async () => {
     const { typeTitle, saveAsPublished, clickButton, selectImage } =
       await setup();
     await typeTitle("201");
@@ -66,13 +66,13 @@ describe("AlertDialog", () => {
     expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
   });
 
-  test("유효하지 않은 내용을 포함한채로 제출하면 AlertDialog가 사라진다", async () => {
+  test("유효하지 않은 내용을 포함한 채로 제출하면 AlertDialog가 사라진다", async () => {
     const { saveAsPublished, clickButton, selectImage } = await setup();
     // await typeTitle("201");　제목을 입력하지 않은 상태
     await selectImage();
     await saveAsPublished();
     await clickButton("네");
-    // 제목 입력란이 invalid 상태가 된다
+    // 제목 입력란이 invalid 상태가 된다.
     await waitFor(() =>
       expect(
         screen.getByRole("textbox", { name: "제목" })
@@ -83,7 +83,7 @@ describe("AlertDialog", () => {
 });
 
 describe("Toast", () => {
-  test("API통신을 시도하면 '저장중입니다...'가 표시된다", async () => {
+  test("API 통신을 시도하면 '저장 중입니다...'가 표시된다", async () => {
     const { typeTitle, saveAsPublished, clickButton, selectImage } =
       await setup();
     await typeTitle("201");
@@ -91,11 +91,11 @@ describe("Toast", () => {
     await saveAsPublished();
     await clickButton("네");
     await waitFor(() =>
-      expect(screen.getByRole("alert")).toHaveTextContent("저장중입니다...")
+      expect(screen.getByRole("alert")).toHaveTextContent("저장 중입니다...")
     );
   });
 
-  test("공개에 성공하면 '공개되었습니다'가 표시된다", async () => {
+  test("공개에 성공하면 '공개됐습니다'가 표시된다", async () => {
     const { typeTitle, saveAsPublished, clickButton, selectImage } =
       await setup();
     await typeTitle("hoge");
@@ -103,7 +103,7 @@ describe("Toast", () => {
     await saveAsPublished();
     await clickButton("네");
     await waitFor(() =>
-      expect(screen.getByRole("alert")).toHaveTextContent("공개되었습니다")
+      expect(screen.getByRole("alert")).toHaveTextContent("공개됐습니다")
     );
   });
 
@@ -121,7 +121,7 @@ describe("Toast", () => {
 });
 
 describe("화면이동", () => {
-  test("비공개 상태로 저장시 비공개한 기사 페이지로 이동한다", async () => {
+  test("비공개 상태로 저장 시 비공개한 기사 페이지로 이동한다", async () => {
     const { typeTitle, saveAsDraft, selectImage } = await setup();
     await typeTitle("201");
     await selectImage();

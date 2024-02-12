@@ -10,12 +10,12 @@ export async function getMyPost({
   authorId: number;
 }) {
   try {
-    // 요청한 ID와 일치하는 기사 데이터를 반환한다
+    // 요청한 ID와 일치하는 기사 데이터를 반환한다.
     const data = await prisma.post.findUnique({ where: { id } });
-    // 데이터가 없거나 미로그인 상태이면 Not Found 에러가 발생한다
+    // 데이터가 없거나 미로그인 상태이면 Not Found 오류가 발생한다.
     if (!data || data?.authorId !== authorId) throw new NotFoundError();
     const { createdAt, updatedAt, ...res } = data;
-    // 타입 추론이 마지막까지 적용되어 있다
+    // 타입 추론이 마지막까지 적용되어 있다.
     return res;
   } catch (err) {
     handlePrismaError(err);
