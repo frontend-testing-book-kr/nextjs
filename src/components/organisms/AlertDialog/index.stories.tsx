@@ -42,7 +42,7 @@ export const CustomButtonLabel: Story = {
 export const ExcludeCancel: Story = {
   decorators: [
     createDecorator({
-      message: "제출됐습니다",
+      message: "전송됐습니다",
       cancelButtonLabel: undefined,
       okButtonLabel: "OK",
     }),
